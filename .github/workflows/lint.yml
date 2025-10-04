@@ -1,4 +1,4 @@
-name: Lint & Check Files
+name: Lint & File Checks
 
 on:
   pull_request:
@@ -28,39 +28,41 @@ jobs:
 
       # Lint HTML
       - name: Lint HTML
-        run: htmlhint "**/*.html" || true
+        run: |
+          htmlhint "**/*.html" || true
 
       # Lint CSS
       - name: Lint CSS
         run: |
-            stylelint "**/*.css" --config-basedir . --config '{"extends": "stylelint-config-standard"}' || true
+          stylelint "**/*.css" --config-basedir . --config '{"extends": "stylelint-config-standard"}' || true
 
-      # Lint JavaScript
+      # Lint JS
       - name: Lint JavaScript
-        run: eslint "**/*.js" || true
-
-      # Check PDFs
-      - name: Check PDFs in recipes folder
         run: |
-          echo "Checking PDF filenames and structure..."
+          eslint "**/*.js" || true
+
+      # ✅ Check PDFs
+      - name: Check PDF files
+        run: |
+          echo "🔍 Checking PDF filenames and structure..."
           errors=0
           for pdf in $(find recipes -type f -name "*.pdf"); do
             filename=$(basename "$pdf")
             dir=$(dirname "$pdf")
-            
+
             # Check lowercase
             if [[ "$filename" != "${filename,,}" ]]; then
-              echo "::warning file=$pdf::Filename is not lowercase: $filename"
+              echo "::warning file=$pdf::PDF filename not lowercase: $filename"
               errors=$((errors+1))
             fi
-            
+
             # Check underscores (no spaces)
             if [[ "$filename" =~ [[:space:]] ]]; then
-              echo "::warning file=$pdf::Filename contains spaces: $filename"
+              echo "::warning file=$pdf::PDF filename contains spaces: $filename"
               errors=$((errors+1))
             fi
-            
-            # Check if inside recipes/<country> folder (min 2 levels)
+
+            # Check folder depth (recipes/<country>/)
             parts=(${dir//\// })
             if [ ${#parts[@]} -lt 2 ]; then
               echo "::warning file=$pdf::PDF should be in recipes/<country>/ folder: $pdf"
@@ -68,5 +70,44 @@ jobs:
             fi
           done
           if [ $errors -eq 0 ]; then
-            echo "All PDFs look good!"
+            echo "✅ All PDFs look good!"
+          fi
+
+      # ✅ Check image files
+      - name: Check image files
+        run: |
+          echo "🖼️ Checking image filenames, extensions, and structure..."
+          errors=0
+          for img in $(find assets -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \)); do
+            filename=$(basename "$img")
+            dir=$(dirname "$img")
+            ext="${filename##*.}"
+
+            # Enforce lowercase
+            if [[ "$filename" != "${filename,,}" ]]; then
+              echo "::warning file=$img::Image filename not lowercase: $filename"
+              errors=$((errors+1))
+            fi
+
+            # No spaces
+            if [[ "$filename" =~ [[:space:]] ]]; then
+              echo "::warning file=$img::Image filename contains spaces: $filename"
+              errors=$((errors+1))
+            fi
+
+            # Folder depth check
+            parts=(${dir//\// })
+            if [ ${#parts[@]} -lt 2 ]; then
+              echo "::warning file=$img::Image should be in assets/<country>/ folder: $img"
+              errors=$((errors+1))
+            fi
+
+            # ✅ Extension consistency check
+            if [[ "$ext" == "jpeg" ]]; then
+              echo "::warning file=$img::Use '.jpg' instead of '.jpeg' for consistency: $filename"
+              errors=$((errors+1))
+            fi
+          done
+          if [ $errors -eq 0 ]; then
+            echo "✅ All images look good!"
           fi
