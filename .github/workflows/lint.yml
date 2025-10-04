@@ -1,0 +1,72 @@
+name: Lint & Check Files
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Setup Node.js for linters
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # Install HTML, CSS, JS linters
+      - name: Install linters
+        run: |
+          npm install -g htmlhint stylelint stylelint-config-standard eslint
+
+      # Lint HTML
+      - name: Lint HTML
+        run: htmlhint "**/*.html" || true
+
+      # Lint CSS
+      - name: Lint CSS
+        run: |
+            stylelint "**/*.css" --config-basedir . --config '{"extends": "stylelint-config-standard"}' || true
+
+      # Lint JavaScript
+      - name: Lint JavaScript
+        run: eslint "**/*.js" || true
+
+      # Check PDFs
+      - name: Check PDFs in recipes folder
+        run: |
+          echo "Checking PDF filenames and structure..."
+          errors=0
+          for pdf in $(find recipes -type f -name "*.pdf"); do
+            filename=$(basename "$pdf")
+            dir=$(dirname "$pdf")
+            
+            # Check lowercase
+            if [[ "$filename" != "${filename,,}" ]]; then
+              echo "::warning file=$pdf::Filename is not lowercase: $filename"
+              errors=$((errors+1))
+            fi
+            
+            # Check underscores (no spaces)
+            if [[ "$filename" =~ [[:space:]] ]]; then
+              echo "::warning file=$pdf::Filename contains spaces: $filename"
+              errors=$((errors+1))
+            fi
+            
+            # Check if inside recipes/<country> folder (min 2 levels)
+            parts=(${dir//\// })
+            if [ ${#parts[@]} -lt 2 ]; then
+              echo "::warning file=$pdf::PDF should be in recipes/<country>/ folder: $pdf"
+              errors=$((errors+1))
+            fi
+          done
+          if [ $errors -eq 0 ]; then
+            echo "All PDFs look good!"
+          fi

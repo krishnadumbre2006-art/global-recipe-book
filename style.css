@@ -1,0 +1,73 @@
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fafafa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background: #4caf50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+/* Search Bar */
+.search-section {
+  text-align: center;
+  margin: 20px;
+}
+
+.search-section input {
+  padding: 10px;
+  width: 80%;
+  max-width: 400px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+/* Recipe List */
+.recipe-list {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+.recipe-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.recipe-list li {
+  margin: 10px 0;
+}
+
+.recipe-list a {
+  text-decoration: none;
+  color: #4caf50;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.recipe-list a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #eee;
+  margin-top: 30px;
+  font-size: 0.9rem;
+}
