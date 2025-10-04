@@ -111,3 +111,31 @@ jobs:
           if [ $errors -eq 0 ]; then
             echo "✅ All images look good!"
           fi
+      - name: 🔍 Check matching PDF and JPG filenames
+        run: |
+          echo "Checking for matching .pdf and .jpg files..."
+          mismatches=0
+          for pdf in $(find recipes -type f -name "*.pdf"); do
+            base="${pdf%.pdf}"
+            jpg="${base}.jpg"
+            jpeg="${base}.jpeg"
+            if [ ! -f "$jpg" ] && [ ! -f "$jpeg" ]; then
+              echo "❌ Missing image for: $pdf"
+              mismatches=$((mismatches+1))
+            fi
+          done
+          for img in $(find recipes -type f -name "*.jpg" -o -name "*.jpeg"); do
+            base="${img%.*}"
+            pdf="${base}.pdf"
+            if [ ! -f "$pdf" ]; then
+              echo "❌ Missing PDF for: $img"
+              mismatches=$((mismatches+1))
+            fi
+          done
+          if [ "$mismatches" -gt 0 ]; then
+            echo "❌ Found $mismatches mismatched file pairs."
+            exit 1
+          else
+            echo "✅ All PDFs have matching JPGs!"
+          fi
+
