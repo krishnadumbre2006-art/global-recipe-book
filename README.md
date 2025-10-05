@@ -1,3 +1,6 @@
+## Maintainer
+   [Varad Dhoke](https://github.com/TickleFuse09)
+   
 # 🌍 Global Recipe Book Website
 
 Welcome to the **Global Recipe Book**! 🎉  
@@ -36,67 +39,6 @@ global-recipe-book/
 │
 └── .github/                    # Issue templates & workflows
 ```
-
----
-
-## 🧾 Recipe Template (Markdown)
-
-When adding a new recipe in `/recipes/`, please follow this template:
-
-```markdown
-# Recipe Name
-
-## 🍽️ Cuisine
-Country / Region
-History and origin of the recipie in short. 
-Short para on how the recipe has changed over the course of time(if it has changed)
-
-## ⏱️ Time Required
-- Preparation: XX min
-- Cooking: XX min
-
-## 🥗 Ingredients
-- 2 cups ...
-- 1 tsp ...
-- ...
-
-## 🍳 Instructions
-1. Step one
-2. Step two
-3. Step three
-
-## 📸 Image 
-![Dish photo](../../assets/country/recipe_name.jpg)
-iamges from the web and add them to the above directory as recipe name in jpg format only
-```
-
----
-
-## 🚀 How to Contribute
-
-1. 🍴 **Fork** this repo  
-2. 🌿 **Clone** your fork locally  
-   ```bash
-   git clone https://github.com/<your-username>/global-recipe-book.git
-   cd global-recipe-book
-   ```
-3. 🔀 **Create a new branch**  
-   ```bash
-   git checkout -b name_surname
-   ```
-4. ✍️ **Add your recipe** in `/recipes/<country>/` (Portable Document Format)  
-   OR  
-   🎨 **Convert a recipe** from `/recipes/<country>` into `/site/` (HTML page)  
-5. ✅ **Commit** your changes  
-   ```bash
-   git add .
-   git commit -m "Added Masala Dosa recipe"
-   ```
-6. 📤 **Push** to your fork  
-   ```bash
-   git push origin name_surname
-   ```
-7. 🔁 Open a **Pull Request** on this repo
 
 ---
 

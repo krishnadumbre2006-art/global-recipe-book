@@ -5,6 +5,30 @@ This project is designed to be **beginner-friendly** and to help you practice **
 
 ---
 
+## 🚀 How to Contribute
+
+1. 🍴 **Fork** this repo  
+2. 🌿 **Clone** your fork locally  
+   ```bash
+   git clone https://github.com/<your-username>/global-recipe-book.git
+   cd global-recipe-book
+   ```
+3. ✍️ **Add your recipe** in `/recipes/<country>/` (Portable Document Format)  
+   OR  
+   🎨 **Convert a recipe** from `/recipes/<country>` into `/site/` (HTML page)  
+4. ✅ **Commit** your changes  
+   ```bash
+   git add .
+   git commit -m "Added <recipe_name> recipe"
+   ```
+5. 📤 **Push** to your fork  
+   ```bash
+   git push origin main
+   ```
+6. 🔁 Open a **Pull Request** on this repo
+
+---
+
 ## 📌 Contribution Options
 
 You can contribute in different ways:
@@ -23,44 +47,15 @@ You can contribute in different ways:
    - Create a matching `recipe_name.html` file inside `/site/<country>/`  
    - Use semantic HTML and link back to `index.html`  
 
-
 ---
 
 ## 🧾 Rules
 
-- Only 5 recipes/pages per PR.  
+- Only 1 recipe/page per PR.  
 - Use **Portable Document Format (.pdf)** for recipes and **HTML (.html)** for pages.  
 - Filenames must be lowercase with underscores (`masala_dosa.pdf`).  
 - Always link back to `index.html` from recipe pages.  
 - Be respectful and inclusive.  
-
----
-
-## 🚀 Getting Started
-
-1. **Fork** this repository  
-2. **Clone** your fork  
-3. Create a **new branch**  
-4. Make your changes  
-5. **Commit** and **push**  
-6. Open a Pull Request  
-
-git clone https://github.com/<your-username>/global-recipe-book.git
-cd global-recipe-book
-
-git checkout -b name_surname
-//solve the issue you are assigned to
-git add .
-git commit -m "Added <recipe name> recipe"
-git push origin name_surname
-
----
-
-## 🌟 Tips for Beginners
-
-- New to GitHub? Check this: [Forking Guide](https://guides.github.com/activities/forking/)  
-- Confused by branching? Try: [Learn Git Branching](https://learngitbranching.js.org/)  
-- New to Markdown? See: [Markdown Cheatsheet](https://www.markdownguide.org/cheat-sheet/)  
 
 ---
 
