@@ -1,6 +1,6 @@
 ## Maintainer
    [Varad Dhoke](https://github.com/TickleFuse09)
-   
+
 # 🌍 Global Recipe Book Website
 
 Welcome to the **Global Recipe Book**! 🎉  
@@ -51,9 +51,8 @@ global-recipe-book/
 ---
 
 ## 🌐 Live Website
-
-Once deployed via GitHub Pages, you’ll find the live site here:  
-👉 [https://<your-username>.github.io/global-recipe-book/](https://<your-username>.github.io/global-recipe-book/)
+  
+👉 [https://ticklefuse09.github.io/](https://ticklefuse09.github.io/)
 
 ---
 
