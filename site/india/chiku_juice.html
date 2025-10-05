@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chiku Juice Recipe</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #f9fafc;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 50px auto;
+      background: #fff;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .top-section {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+      border-bottom: 2px solid #f1f1f1;
+    }
+
+    .recipe-img {
+      flex: 1 1 300px;
+    }
+
+    .recipe-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .recipe-info {
+      flex: 2 1 400px;
+      padding: 20px;
+    }
+
+    .recipe-info h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #d48c00;
+    }
+
+    .recipe-info h3 {
+      font-weight: 500;
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .recipe-info p {
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .bottom-section {
+      padding: 30px;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      color: #d48c00;
+      border-bottom: 2px solid #ffe1a8;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li::before {
+      content: "🍃 ";
+    }
+
+    ul li {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    ol {
+      padding-left: 18px;
+    }
+
+    ol li {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    .time {
+      background: #fff8e5;
+      border-left: 4px solid #f9b23d;
+      padding: 10px 15px;
+      margin: 15px 0;
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #fff5db;
+      color: #444;
+      font-size: 0.85rem;
+      border-top: 1px solid #eee;
+    }
+
+    @media (max-width: 768px) {
+      .top-section {
+        flex-direction: column;
+      }
+
+      .recipe-info {
+        padding-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Top Section -->
+    <div class="top-section">
+      <div class="recipe-img">
+        <img src="../../assets/india/chiku_juice.jpg" alt="Chiku Juice">
+      </div>
+      <div class="recipe-info">
+        <h1>Chiku Juice</h1>
+        <h3>🍹 Cuisine: India / Tropical Regions</h3>
+        <p>
+          Chiku, also known as Sapodilla or Sapota, is a tropical fruit widely grown in India, Mexico, and the Caribbean. 
+          Traditionally eaten raw, it became popular as a juice in India for its natural sweetness and creamy texture. 
+          Over time, variations with milk, ice cream, or other fruits (like banana) have emerged, making it a beloved summer refresher.
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="bottom-section">
+      <h2 class="section-title">⏱️ Time Required</h2>
+      <div class="time">
+        <p>Preparation: 10 min<br>Cooking: 0 min</p>
+      </div>
+
+      <h2 class="section-title">🥗 Ingredients</h2>
+      <ul>
+        <li>4 ripe chikus (sapodilla/sapota)</li>
+        <li>1 cup chilled milk (or water for a lighter version)</li>
+        <li>2 tbsp sugar or honey (adjust to taste)</li>
+        <li>4–5 ice cubes</li>
+        <li>A pinch of cardamom powder (optional)</li>
+      </ul>
+
+      <h2 class="section-title">👨‍🍳 Instructions</h2>
+      <ol>
+        <li>Wash and peel the chikus. Remove the seeds and cut the fruit into pieces.</li>
+        <li>Add the chiku pieces into a blender.</li>
+        <li>Pour in chilled milk (or water), sugar/honey, and ice cubes.</li>
+        <li>Blend until smooth and creamy.</li>
+        <li>Strain if desired for a smoother texture.</li>
+        <li>Serve immediately, garnished with a sprinkle of cardamom powder or a chiku slice on the rim of the glass.</li>
+      </ol>
+    </div>
+
+    <footer>
+      © 2025 Tropical Flavors | Designed with 🍃 & Love
+    </footer>
+  </div>
+</body>
+</html>
