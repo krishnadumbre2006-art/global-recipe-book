@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🌍 Global Recipe Book</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <h1>🌍 Global Recipe Book</h1>
-    <p>A community-driven collection of recipes from around the world.</p>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🌍 Global Recipe Book</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>🌍 Global Recipe Book</h1>
+      <p>A community-driven collection of recipes from around the world.</p>
+    </header>
 
-  <main>
-    <section class="search-section">
-      <input type="text" id="searchBar" placeholder="🔍 Search recipes..." onkeyup="searchRecipes()" />
-    </section>
+    <main>
+      <section class="search-section">
+        <label for="searchBar" class="sr-only">Search recipes</label>
+        <input
+          type="text"
+          id="searchBar"
+          placeholder="🔍 Search recipes..."
+          onkeyup="searchRecipes()"
+          aria-label="Search recipes"
+        />
+      </section>
 
-    <section class="recipe-list" id="recipeList">
-      <!-- Contributors will add new recipe links here -->
-      <ul>
-        <li><a href="site/india/example.html">Example (India)</a></li>
-        <li><a href="site/india/chiku_juice.html">Chiku Juice (India)</a></li>
-        
-      </ul>
-    </section>
-  </main>
+      <section class="recipe-list" id="recipeList">
+        <!-- Contributors will add new recipe links here -->
+        <ul>
+          <li><a href="site/india/example.html">Example (India)</a></li>
+          <li><a href="site/india/chiku_juice.html">Chiku Juice (India)</a></li>
+          <li><a href="site/india/masala_dosa.html">Masala Dosa (India)</a></li>
+        </ul>
+      </section>
+    </main>
 
-  <footer>
-    <p>Made with ❤️ by the Open Source Community</p>
-  </footer>
+    <footer>
+      <p>Made with ❤️ by the Open Source Community</p>
+    </footer>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
