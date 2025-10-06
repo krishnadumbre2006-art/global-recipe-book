@@ -7,115 +7,93 @@
   <meta name="description" content="Classic French Quiche Lorraine recipe — flaky pastry, smoky bacon, silky custard. Beautiful responsive recipe page with printable card and photo.">
   <style>
     :root{
-      --bg1:#f8f8f8; /* Light gray background */
-      --accent:#c0392b; /* A primary, rich color (e.g., a deep red) */
-      --accent-2:#d35400; /* A secondary, complementary color */
-      --muted:#7f8c8d; /* Muted text color */
-      --card:#ffffff; /* Pure white card background */
-      --radius:8px; /* Slightly smaller radius */
+      --bg1:#f8f8f8;
+      --accent:#c0392b;
+      --accent-2:#d35400;
+      --muted:#7f8c8d;
+      --card:#ffffff;
+      --radius:8px;
       --maxw:1000px;
-      --shadow: 0 4px 12px rgba(0,0,0,0.05); /* Lighter, subtle shadow */
+      --shadow: 0 4px 12px rgba(0,0,0,0.05);
       --serif: 'Georgia', serif;
       --sans: 'Arial', system-ui, sans-serif;
     }
-    
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
       font-family:var(--sans);
-      background:var(--bg1); /* Simple background color */
+      background:var(--bg1);
       color:#333;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
       padding:30px 20px;
       display:flex;
       justify-content:center;
     }
-
     .wrap{
       width:100%;
       max-width:var(--maxw);
       margin:auto;
       display:grid;
-      grid-template-columns: 1fr 380px; /* Adjusted sidebar width */
+      grid-template-columns: 1fr 380px;
       gap:24px;
       align-items:start;
     }
-
-    /* MAIN HERO CARD */
     .hero{
-      background: var(--card); /* Simple white background */
+      background: var(--card);
       border-radius:var(--radius);
       padding:24px;
-      box-shadow:var(--shadow); /* Subtle shadow */
+      box-shadow:var(--shadow);
       position:relative;
-      overflow:hidden; /* Keep overflow hidden for a cleaner box */
-      min-height:auto; /* Remove fixed min-height */
+      overflow:hidden;
     }
-
     .hero-header{
       display:flex;
       align-items:center;
       gap:16px;
     }
     .badge{
-      background:var(--accent); /* Solid accent color */
+      background:var(--accent);
       color:white;
       padding:8px 12px;
-      border-radius:6px; /* Simpler radius */
+      border-radius:6px;
       font-weight:700;
-      letter-spacing:0;
-      box-shadow:none; /* Removed shadow */
       font-size:0.9rem;
-      align-self:flex-start; /* Aligns with the top of the title block */
+      align-self:flex-start;
     }
-
     h1.title{
       font-family:var(--serif);
-      font-size:2.4rem; /* Slightly smaller font */
+      font-size:2.4rem;
       margin:0;
       line-height:1.1;
       color:#222;
-      letter-spacing:0;
     }
-
     .meta{
       margin-top:8px;
       color:var(--muted);
       display:flex;
-      gap:10px; /* Smaller gap */
-      align-items:center;
+      gap:10px;
       flex-wrap:wrap;
       font-size:0.95rem;
     }
     .meta .chip{
-      background:transparent; /* Transparent background */
-      backdrop-filter:none;
+      background:transparent;
       padding:6px 10px;
       border-radius:4px;
-      border:1px solid #ddd; /* Simple light border */
+      border:1px solid #ddd;
       font-weight:600;
     }
-
-    /* IMAGE CARD */
     .image-wrap{
-      position:static; /* Put image back into the flow */
       width:100%;
       margin-top:20px;
-      transform:none; /* Remove rotation */
     }
     .plate{
       width:100%;
       border-radius:var(--radius);
       overflow:hidden;
-      box-shadow:var(--shadow); /* Use standard subtle shadow */
-      border:none; /* Remove thick white border */
-      transform:none; /* Remove rotation */
-      /* Aspect Ratio Box for Image (based on a common image aspect ratio, e.g., 4:3) */
+      box-shadow:var(--shadow);
       position: relative;
-      padding-top: 75%; /* (height / width) * 100% = (3 / 4) * 100% = 75% */
-      background-color: #f0f0f0; /* Placeholder background */
+      padding-top: 75%;
+      background-color: #f0f0f0;
     }
     .plate img{
       position: absolute;
@@ -123,55 +101,39 @@
       left: 0;
       width:100%;
       height:100%;
-      object-fit: cover; /* Ensures image covers the area without distortion */
+      object-fit: cover;
       display:block;
     }
-
-    /* CONTENT */
-    .content{
-      padding-top:20px;
-    }
+    .content{padding-top:20px;}
     .intro{
       font-size:1rem;
       color:#444;
       line-height:1.6;
-      max-width:none; /* Let it take full width */
-      background:none; /* Remove gradient background */
-      border-radius:0;
-      padding:12px 0; /* Simpler padding */
-      border-left:none;
-      border-bottom:2px solid var(--accent); /* Simple, clear separator/marker */
-      box-shadow:none;
+      padding:12px 0;
+      border-bottom:2px solid var(--accent);
     }
-
-    /* RIGHT SIDEBAR */
     .aside{
-      background:var(--card); /* Simple white background */
+      background:var(--card);
       border-radius:var(--radius);
       padding:20px;
       box-shadow:var(--shadow);
-      height:auto; /* Adjust height */
-      position:sticky; /* Make it sticky for better flow */
+      position:sticky;
       top:20px;
-      border:none; /* Remove border */
     }
-
     .card-title{font-weight:700;margin-bottom:12px;color:#333;font-size:1.1rem}
-
     .ingredients{
       display:grid;
-      gap:8px; /* Smaller gap */
-      grid-template-columns:1fr; /* Single column for ingredients */
+      gap:8px;
+      grid-template-columns:1fr;
       margin-bottom:16px;
     }
     .ingredient{
-      background:#f9f9f9; /* Very light background for items */
+      background:#f9f9f9;
       padding:10px;
       border-radius:6px;
       display:flex;
       align-items:center;
       gap:10px;
-      border:none; /* Remove border */
     }
     .ingredient .dot{
       width:8px;
@@ -180,7 +142,6 @@
       background:var(--accent);
       flex-shrink:0;
     }
-
     .meta-grid{
       display:flex;
       gap:8px;
@@ -188,26 +149,23 @@
       margin-bottom:16px;
     }
     .stat{
-      background:#f0f0f0; /* Simple gray background */
+      background:#f0f0f0;
       padding:6px 10px;
       border-radius:4px;
       font-weight:600;
-      border:none;
       font-size:0.9rem;
     }
-
     .steps{margin-top:16px}
-    ol.steps-list{padding-left:20px;margin:0;list-style-type:decimal} /* Ensure standard list style */
+    ol.steps-list{padding-left:20px;margin:0}
     ol.steps-list li{
       margin-bottom:10px;
       padding:10px;
-      background:#fff; /* White background for steps */
+      background:#fff;
       border-radius:6px;
-      border-left:4px solid var(--accent); /* Simple accent line */
+      border-left:4px solid var(--accent);
       line-height:1.5;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.03); /* Very subtle shadow on steps */
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
     }
-
     .tools{display:flex;gap:10px;margin-top:16px}
     .btn{
       display:inline-flex;
@@ -216,40 +174,31 @@
       padding:10px 14px;
       border-radius:6px;
       border:none;
-      background:var(--accent); /* Solid accent color */
+      background:var(--accent);
       color:white;
       font-weight:600;
       cursor:pointer;
-      box-shadow:none; /* Removed shadow */
       text-decoration:none;
       font-size:1rem;
-      transition:background 0.2s;
     }
     .btn:hover{background:var(--accent-2);}
     .btn.ghost{
       background:transparent;
       color:var(--accent);
-      border:1px solid var(--accent); /* Simple border matching text color */
-      font-weight:600;
-      box-shadow:none;
+      border:1px solid var(--accent);
     }
     .btn.ghost:hover{background:rgba(192, 57, 43, 0.05);}
-
-    /* EXTRA STUFF */
     .notes{
       margin-top:12px;
       padding:15px;
-      background:#fff8f4; /* Light, warm background */
+      background:#fff8f4;
       border-radius:6px;
-      border:1px solid #f0e0d0; /* Simple, light border */
+      border:1px solid #f0e0d0;
       color:#444;
       line-height:1.5;
     }
     .notes strong{color:var(--accent);}
-
-    /* FOOTER (Sidebar) */
     footer{
-      position:static !important; /* Remove absolute positioning */
       margin-top:20px;
       padding-top:15px;
       border-top:1px solid #eee;
@@ -257,23 +206,16 @@
       color:var(--muted);
     }
     footer strong{color:#333;}
-
-    /* PRINT STYLES */
     @media print{
       body{padding:0}
       .wrap{grid-template-columns:1fr}
-      .image-wrap{position:static;transform:none;margin-bottom:10px}
       .aside{page-break-inside:avoid}
-      .btn, .back{display:none}
+      .btn{display:none}
     }
-
-    /* RESPONSIVE */
     @media(max-width:980px){
-      .wrap{grid-template-columns:1fr;padding-bottom:30px}
-      .image-wrap{width:100%;margin:20px 0 0;}
+      .wrap{grid-template-columns:1fr}
       .aside{position:static;margin-top:20px;}
     }
-
     @media(max-width:420px){
       h1.title{font-size:2rem}
       .badge{font-size:0.85rem;}
@@ -296,20 +238,10 @@
         </div>
       </div>
 
-      <div class="image-wrap" aria-hidden="false">
+      <div class="image-wrap">
         <figure class="plate">
-          <img 
-            src="https://insidermama.com/wp-content/uploads/2025/04/8-quiche.webp" 
-            srcset="
-              https://insidermama.com/wp-content/uploads/2025/04/8-quiche.webp 400w,
-              https://insidermama.com/wp-content/uploads/2025/04/8-quiche.webp 800w,
-              https://insidermama.com/wp-content/uploads/2025/04/8-quiche.webp 1200w
-            "
-            sizes="(max-width: 980px) 100vw, (max-width: 1000px) 600px, 500px"
-            alt="Quiche Lorraine on a plate" 
-            itemprop="image"
-            width="800"  height="600" loading="lazy"
-          >
+          <img src="https://insidermama.com/wp-content/uploads/2025/04/8-quiche.webp" 
+            alt="Quiche Lorraine on a plate" itemprop="image" width="800" height="600" loading="lazy">
         </figure>
       </div>
 
@@ -329,31 +261,30 @@
           <h2 id="directions" class="card-title">Directions (Short & Sharp)</h2>
           <ol class="steps-list" itemprop="recipeInstructions">
             <li>Blind-bake a 9" pie crust until lightly golden. Let cool.</li>
-            <li>Sauté diced bacon (lardons) until crisp; drain. Optionally soften thinly sliced onions in the rendered fat.</li>
-            <li>Whisk 4 large eggs with 1 1/4 cups heavy cream, salt, pepper, and a pinch of nutmeg until smooth.</li>
-            <li>Scatter bacon (and onions) into crust, add 1 1/2 cups grated Gruyère, then pour custard. Bake at 180°C/350°F for ~30–35 minutes until set with slight wobble.</li>
+            <li>Sauté diced bacon (lardons) until crisp; drain. Optionally soften onions in the rendered fat.</li>
+            <li>Whisk 4 large eggs with 1 1/4 cups heavy cream, salt, pepper, and nutmeg.</li>
+            <li>Scatter bacon (and onions) into crust, add Gruyère, then pour custard. Bake at 180°C/350°F for 30–35 minutes until set.</li>
             <li>Rest 10–15 minutes, slice, and serve warm or room temperature.</li>
           </ol>
         </section>
 
         <div style="margin-top:18px;display:flex;gap:12px;align-items:center">
-          <button class="btn" id="printBtn">🖨️ Print / Save PDF</button>
-          <button class="btn ghost" id="toggleTips">💡 Tips</button>
-          <a class="btn ghost" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ Top</a>
+          <button class="btn">🖨️ Print / Save PDF</button>
+          <button class="btn ghost">💡 Tips</button>
+          <a class="btn ghost" href="#">↑ Top</a>
         </div>
-
       </div>
     </main>
 
     <aside class="aside">
       <div class="card-title">Ingredients</div>
       <div class="ingredients" itemprop="recipeIngredient">
-        <div class="ingredient"><span class="dot"></span> 1 x 9" (23cm) pie crust (homemade or store-bought)</div>
+        <div class="ingredient"><span class="dot"></span> 1 x 9" pie crust</div>
         <div class="ingredient"><span class="dot"></span> 200g smoked bacon / lardons</div>
         <div class="ingredient"><span class="dot"></span> 4 large eggs</div>
         <div class="ingredient"><span class="dot"></span> 300–320ml heavy cream</div>
         <div class="ingredient"><span class="dot"></span> 150–180g Gruyère, grated</div>
-        <div class="ingredient"><span class="dot"></span> Salt, pepper, pinch of nutmeg</div>
+        <div class="ingredient"><span class="dot"></span> Salt, pepper, nutmeg</div>
       </div>
 
       <div class="card-title" style="margin-top:12px">Quick Stats</div>
@@ -365,18 +296,18 @@
 
       <div class="card-title">Pro Tips</div>
       <div class="notes">
-        <strong>Cheese:</strong> Swap half Gruyère for Emmental for a lighter melt.<br>
-        <strong>Custard:</strong> For a silkier texture, strain the custard before pouring.
+        <strong>Cheese:</strong> Swap half Gruyère for Emmental.<br>
+        <strong>Custard:</strong> Strain custard for extra silkiness.
       </div>
 
       <div style="position:relative;margin-top:14px">
         <div class="card-title">Nutrition (est)</div>
-        <div style="font-size:0.95rem;color:var(--muted);margin-top:6px">Per slice (1 of 8): Fat 32g • Carbs 14g • Protein 15g</div>
+        <div style="font-size:0.95rem;color:var(--muted);margin-top:6px">Per slice: Fat 32g • Carbs 14g • Protein 15g</div>
       </div>
 
       <div style="margin-top:18px;display:flex;gap:8px;flex-wrap:wrap">
-        <button class="btn ghost" id="shareBtn">🔗 Copy Link</button>
-        <a class="btn" href="#" onclick="document.getElementById('printBtn').click();return false;">📥 Download Recipe</a>
+        <button class="btn ghost">🔗 Copy Link</button>
+        <a class="btn" href="#">📥 Download Recipe</a>
       </div>
 
       <footer>
@@ -384,30 +315,5 @@
       </footer>
     </aside>
   </div>
-
-  <script>
-    // Print / Save
-    document.getElementById('printBtn').addEventListener('click',function(){
-      window.print();
-    });
-
-    // Toggle tips (simple progressive disclosure)
-    document.getElementById('toggleTips').addEventListener('click',function(e){
-      const notes = document.querySelector('.notes');
-      if(!notes) return;
-      // Use block/none for simple show/hide
-      if(notes.style.display === 'block'){ notes.style.display=''; e.target.textContent='💡 Tips'; }
-      else{ notes.style.display='block'; e.target.textContent='🔽 Hide Tips'; }
-    });
-
-    // Share (copy url)
-    document.getElementById('shareBtn').addEventListener('click',async function(){
-      try{
-        await navigator.clipboard.writeText(location.href);
-        this.textContent='✅ Copied';
-        setTimeout(()=>this.textContent='🔗 Copy Link',1500);
-      }catch(e){ alert('Copy failed — select and copy the URL manually.'); }
-    });
-  </script>
 </body>
 </html>
