@@ -59,5 +59,5 @@ global-recipe-book/
 ## 🏆 Contributors
 
 Thanks to all the amazing people who contribute! 
-
-[Gaurav Girkar](https://github.com/GauravGirkar) 
+Will be making a contributers section on the live website after hactoberfest ends.
+Star the repository so you don't forget.

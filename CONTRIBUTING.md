@@ -61,7 +61,8 @@ You can contribute in different ways:
 
 ## 🏆 Recognition
 
-Your name will be added to the **Contributors section** in the README after your PR is merged! 🎉
+Your name will be added to the **Contributors section** on the live website as soon as hactoberfest ends! 🎉
+Star the repository so you don't forget.
 
 ### 🔍 Linting (Don’t Worry Too Much)
 Our repo uses automatic "linters" to check Markdown, HTML, CSS, and JS.  
