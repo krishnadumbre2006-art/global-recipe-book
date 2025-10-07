@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Konkani Fish Curry — Recipe</title>
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --accent:#0b6e4f;
+      --accent-2:#f59e0b;
+      --muted:#6b7280;
+      --radius:14px;
+      --container:1100px;
+      --glass: rgba(255,255,255,0.6);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,var(--bg),#eef2f7 60%);
+      color:#111827;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:36px 20px;
+    }
+    .wrap{
+      max-width:var(--container);
+      margin:0 auto;
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:0 10px 30px rgba(16,24,40,0.08);
+      overflow:hidden;
+      border:1px solid rgba(15,23,42,0.03);
+    }
+    header{
+      padding:26px 30px;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      background:linear-gradient(90deg, rgba(11,110,79,0.04), rgba(245,158,11,0.02));
+      border-bottom:1px solid rgba(15,23,42,0.03);
+    }
+    .logo{
+      width:56px;height:56px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;font-weight:700;font-size:20px;
+    }
+    header h1{font-size:20px;margin:0}
+    header p{margin:0;color:var(--muted);font-size:13px}
+
+    .top{
+      display:flex;gap:28px;padding:28px;align-items:flex-start;flex-wrap:wrap;
+    }
+    .left{
+      flex:0 0 320px;min-width:260px;
+    }
+    .card-image{
+      border-radius:12px;overflow:hidden;box-shadow:0 8px 20px rgba(2,6,23,0.06);border:1px solid rgba(2,6,23,0.04);
+    }
+    .card-image img{display:block;width:100%;height:220px;object-fit:cover}
+
+    .right{flex:1;min-width:300px}
+    .meta{
+      display:flex;gap:12px;align-items:center;margin-bottom:14px
+    }
+    .badge{background:var(--glass);padding:8px 10px;border-radius:10px;font-size:13px;color:var(--accent);border:1px solid rgba(11,110,79,0.06)}
+    h2.title{margin:0 0 8px 0;font-size:24px;color:var(--accent)}
+    .desc{color:var(--muted);line-height:1.6;margin-bottom:12px}
+
+    .info-grid{display:flex;gap:10px;flex-wrap:wrap}
+    .info-item{background:#fbfdfb;border:1px solid rgba(11,110,79,0.04);padding:12px;border-radius:10px;min-width:140px}
+    .info-item strong{display:block;color:#0f172a}
+    .tags{margin-top:12px}
+    .tag{display:inline-block;background:rgba(11,110,79,0.08);color:var(--accent);padding:6px 8px;border-radius:999px;font-size:12px;margin-right:8px}
+
+    .bottom{padding:28px;border-top:1px solid rgba(15,23,42,0.03);display:grid;grid-template-columns:1fr 1fr;gap:26px}
+    .box{background:linear-gradient(180deg,#fff,#fbfdff);padding:18px;border-radius:12px;border:1px solid rgba(2,6,23,0.03)}
+    .section-title{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--accent);margin-bottom:10px}
+    .time{font-size:14px;color:var(--muted);}
+
+    ul.ingredients{padding-left:18px;margin:0}
+    ul.ingredients li{margin-bottom:8px}
+    ol.steps{padding-left:18px;margin:0}
+    ol.steps li{margin-bottom:10px}
+
+    .notes{font-size:14px;color:var(--muted);line-height:1.5}
+
+    footer.card-footer{padding:18px;border-top:1px solid rgba(15,23,42,0.03);display:flex;justify-content:space-between;align-items:center}
+    .btn{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:600}
+    .muted-btn{background:transparent;border:1px solid rgba(2,6,23,0.06);padding:10px 12px;border-radius:10px;color:var(--muted);cursor:pointer}
+
+    @media (max-width:900px){
+      .bottom{grid-template-columns:1fr}
+      .left{flex:1 1 100%}
+      .right{flex:1 1 100%}
+      .card-image img{height:200px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">KF</div>
+      <div>
+        <h1>Konkani Fish Curry</h1>
+        <p>Coastal Konkani classic — tangy, spicy coconut curry perfect with steamed rice or neer dosa.</p>
+      </div>
+    </header>
+
+    <section class="top">
+      <div class="left">
+        <figure class="card-image">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Goan_fish_curry.jpg" alt="Konkani Fish Curry">
+        </figure>
+      </div>
+
+      <div class="right">
+        <div class="meta">
+          <div class="badge">Konkan • Coastal</div>
+          <div class="badge">Coconut Oil • Tamarind</div>
+          <div class="badge">Serves 3–4</div>
+        </div>
+
+        <h2 class="title">A creamy, tangy fish curry from India’s Konkan coast</h2>
+        <p class="desc">This Konkani-style fish curry combines freshly grated coconut, tamarind (or kokum), and a fragrant spice paste to create a bright, warming sauce that complements firm coastal fish like pomfret or mackerel. Traditionally cooked in coconut oil, it has a characteristic coastal aroma and a balance of spice, heat and tang.</p>
+
+        <div class="info-grid">
+          <div class="info-item"><strong>Prep</strong><span class="time">15 minutes</span></div>
+          <div class="info-item"><strong>Cook</strong><span class="time">20 minutes</span></div>
+          <div class="info-item"><strong>Difficulty</strong><span class="time">Easy – Medium</span></div>
+        </div>
+
+        <div class="tags" style="margin-top:14px">
+          <span class="tag">Gluten-free</span>
+          <span class="tag">Seafood</span>
+          <span class="tag">Traditional</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="bottom">
+      <div class="box">
+        <div class="section-title">Ingredients</div>
+        <ul class="ingredients">
+          <li><strong>For the curry:</strong> 500 g fish (pomfret, mackerel, kingfish), cut into steaks</li>
+          <li>2 tbsp coconut oil</li>
+          <li>1 medium onion, finely sliced</li>
+          <li>1 medium tomato, chopped</li>
+          <li>8–10 fresh curry leaves</li>
+          <li>1 tsp mustard seeds</li>
+          <li>Salt to taste</li>
+          <li>Water as needed</li>
+        </ul>
+
+        <div style="height:10px"></div>
+
+        <div class="section-title">Masala to grind</div>
+        <ul class="ingredients">
+          <li>1 cup freshly grated coconut</li>
+          <li>4–6 dried red chillies (adjust to heat)</li>
+          <li>1 tbsp coriander seeds</li>
+          <li>½ tsp cumin seeds</li>
+          <li>3–4 garlic cloves</li>
+          <li>½" piece ginger</li>
+          <li>Small lemon-sized tamarind ball (or 3 kokum petals)</li>
+          <li>½ tsp turmeric powder</li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <div class="section-title">Method</div>
+        <ol class="steps">
+          <li><strong>Prep fish:</strong> Rinse and pat dry the fish pieces. Lightly rub with salt and a pinch of turmeric. Set aside.</li>
+          <li><strong>Make the masala:</strong> In a blender, grind the grated coconut, dried chillies, coriander seeds, cumin, garlic, ginger and tamarind with 3–4 tbsp water to a smooth paste.</li>
+          <li><strong>Sauté aromatics:</strong> Heat coconut oil in a deep pan. Add mustard seeds; when they splutter, add curry leaves and sliced onion. Sauté until translucent and lightly golden.</li>
+          <li><strong>Add masala & tomato:</strong> Stir in the ground masala and cook on medium heat for 3–4 minutes until fragrant. Add chopped tomato and cook until oil slightly separates.</li>
+          <li><strong>Add water:</strong> Pour 1 to 1½ cups of water (adjust for desired consistency) and bring to a gentle simmer.</li>
+          <li><strong>Add fish carefully:</strong> Gently slide the fish pieces into the simmering curry. Cover and simmer on low for 8–10 minutes until fish is cooked through. Avoid excessive stirring to keep the fish intact.</li>
+          <li><strong>Adjust seasoning:</strong> Taste and add salt. If using kokum, adjust tang by adding 1–2 extra pieces or a splash of tamarind water if needed.</li>
+          <li><strong>Finish:</strong> Turn off heat and drizzle a teaspoon of coconut oil on top for aroma. Garnish with fresh curry leaves.</li>
+        </ol>
+
+        <div style="height:12px"></div>
+        <div class="section-title">Serving</div>
+        <p class="notes">Serve hot with steamed rice, neer dosa, or plain boiled rice. A simple kachumber or sliced raw onion and lemon on the side complements the curry well.</p>
+
+        <div style="height:12px"></div>
+        <div class="section-title">Tips & Variations</div>
+        <ul class="ingredients">
+          <li>Use kokum instead of tamarind for a characteristic coastal sourness.</li>
+          <li>Freshly grated coconut gives the best flavor — avoid desiccated coconut for authenticity.</li>
+          <li>For a slightly thinner curry, increase water and simmer a little longer.</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="card-footer">
+      <div style="font-size:13px;color:var(--muted)">© Konkani Kitchen • Traditional Coastal Recipe</div>
+      <div>
+        <button class="muted-btn" onclick="window.print()">Print Recipe</button>
+        <button class="btn" style="margin-left:10px" onclick="downloadHTML()">Download HTML</button>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    function downloadHTML(){
+      const html = `<!doctype html>\n${document.documentElement.outerHTML}`;
+      const blob = new Blob([html], {type: 'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'Konkani_Fish_Curry.html';
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
