@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sarson ka Saag - Mustard Greens Curry</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #ff9933 0%, #fff 15%, #fff 85%, #138808 100%);
+      background-attachment: fixed;
+      color: #2d1810;
+      overflow-x: hidden;
+    }
+
+    .dhol-pattern {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255, 153, 51, 0.03) 35px, rgba(255, 153, 51, 0.03) 70px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    header {
+      background: linear-gradient(135deg, #d35400 0%, #e67e22 50%, #f39c12 100%);
+      position: relative;
+      text-align: center;
+      padding: 60px 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    header::before {
+      content: '🌾';
+      position: absolute;
+      font-size: 120px;
+      opacity: 0.1;
+      left: 10%;
+      top: -20px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    header::after {
+      content: '🌾';
+      position: absolute;
+      font-size: 120px;
+      opacity: 0.1;
+      right: 10%;
+      top: -20px;
+      animation: float 6s ease-in-out infinite 3s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    header h1 {
+      font-family: 'Georgia', serif;
+      font-size: 4em;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 4px 4px 0px #8b4513, 6px 6px 20px rgba(0, 0, 0, 0.5);
+      margin-bottom: 15px;
+      letter-spacing: 2px;
+      animation: titlePulse 2s ease-in-out infinite;
+    }
+
+    @keyframes titlePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+
+    .subtitle {
+      font-size: 1.4em;
+      color: #ffe6cc;
+      font-weight: 600;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      margin-top: 10px;
+    }
+
+    .flag-emoji {
+      font-size: 2.5em;
+      display: inline-block;
+      animation: wave 1.5s ease-in-out infinite;
+    }
+
+    @keyframes wave {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(15deg); }
+      75% { transform: rotate(-15deg); }
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: -30px auto 50px;
+      background: #fffef9;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+      border-radius: 25px;
+      padding: 50px;
+      position: relative;
+      z-index: 2;
+      border: 8px solid #f39c12;
+    }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      background: linear-gradient(45deg, #ff9933, #fff, #138808);
+      border-radius: 25px;
+      z-index: -1;
+      opacity: 0.5;
+    }
+
+    .dish-image {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 6px solid #d35400;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .dish-image:hover {
+      transform: scale(1.02) rotate(-1deg);
+    }
+
+    h2 {
+      color: #d35400;
+      font-size: 2.2em;
+      font-weight: 700;
+      margin: 35px 0 20px;
+      padding-bottom: 15px;
+      border-bottom: 4px solid #f39c12;
+      position: relative;
+      font-family: 'Georgia', serif;
+    }
+
+    h2::before {
+      content: '✦';
+      margin-right: 15px;
+      color: #f39c12;
+    }
+
+    ul {
+      line-height: 2;
+      margin-left: 30px;
+      font-size: 1.1em;
+    }
+
+    ul li {
+      margin: 12px 0;
+      padding-left: 10px;
+      transition: transform 0.2s ease;
+    }
+
+    ul li:hover {
+      transform: translateX(10px);
+      color: #d35400;
+    }
+
+    .quote {
+      background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+      border-left: 8px solid #f39c12;
+      border-radius: 10px;
+      padding: 25px;
+      font-style: italic;
+      margin: 35px 0;
+      font-size: 1.2em;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote::before {
+      content: '"';
+      position: absolute;
+      font-size: 120px;
+      color: rgba(211, 84, 0, 0.1);
+      top: -30px;
+      left: 10px;
+      font-family: Georgia, serif;
+    }
+
+    .quote-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .serving-suggestion {
+      background: linear-gradient(135deg, #138808 0%, #1e7e34 100%);
+      color: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      margin-top: 35px;
+      font-size: 1.3em;
+      font-weight: 600;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      animation: glow 2s ease-in-out infinite;
+    }
+
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); }
+      50% { box-shadow: 0 8px 35px rgba(19, 136, 8, 0.5); }
+    }
+
+    footer {
+      background: linear-gradient(135deg, #8b4513 0%, #d35400 50%, #e67e22 100%);
+      color: white;
+      text-align: center;
+      padding: 30px;
+      margin-top: 50px;
+      font-size: 1.1em;
+      box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 2;
+    }
+
+    footer p {
+      margin: 5px 0;
+      font-weight: 600;
+    }
+
+    .butter-icon {
+      display: inline-block;
+      font-size: 2em;
+      animation: spin 4s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .section-divider {
+      text-align: center;
+      margin: 40px 0;
+      font-size: 2em;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5em;
+      }
+      
+      .container {
+        padding: 30px;
+        margin: -20px 20px 30px;
+      }
+      
+      h2 {
+        font-size: 1.8em;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="dhol-pattern"></div>
+
+  <header>
+    <div class="flag-emoji">🇮🇳</div>
+    <h1>Sarson ka Saag</h1>
+    <p class="subtitle">🌾 The Pride of Punjab 🌾</p>
+    <p class="subtitle">Mustard Greens Curry with a Golden Touch</p>
+  </header>
+
+  <div class="container">
+    <!-- ✅ Correct relative path based on folder structure -->
+    <img src="../../assets/india/sarson_ka_saag.jpg" alt="Sarson ka Saag" class="dish-image">
+
+    <div class="quote">
+      <div class="quote-content">
+        <strong>Rustic, hearty, and rich</strong> — Sarson ka Saag is the soulful taste of Punjab, best enjoyed with <strong>Makki di Roti</strong> and a dollop of white butter. The warmth of the hearth, the fields of mustard, and the love of Punjabi kitchens — all in one bowl!
+      </div>
+    </div>
+
+    <div class="section-divider">🧈 ★ 🧈</div>
+
+    <div class="ingredients">
+      <h2>Ingredients</h2>
+      <ul>
+        <li><strong>2 cups</strong> mustard greens (sarson), chopped</li>
+        <li><strong>1 cup</strong> spinach (palak)</li>
+        <li><strong>½ cup</strong> bathua (goosefoot leaves)</li>
+        <li><strong>2</strong> green chilies</li>
+        <li><strong>1-inch piece</strong> ginger, chopped</li>
+        <li><strong>4–5</strong> garlic cloves</li>
+        <li><strong>1 large</strong> onion, finely chopped</li>
+        <li><strong>2</strong> tomatoes, pureed</li>
+        <li><strong>2 tbsp</strong> maize flour (makki atta)</li>
+        <li><strong>2 tbsp</strong> ghee or butter</li>
+        <li><strong>Salt</strong> to taste</li>
+      </ul>
+    </div>
+
+    <div class="section-divider">⭐ ★ ⭐</div>
+
+    <div class="instructions">
+      <h2>Instructions</h2>
+      <ul>
+        <li>Boil mustard greens, spinach, and bathua with ginger, garlic, and green chilies for <strong>10–15 minutes</strong>.</li>
+        <li>Cool and blend to a <strong>coarse paste</strong> — keep it rustic!</li>
+        <li>Heat <strong>ghee</strong> in a pan, sauté onions until golden brown, add tomato puree and cook until aromatic.</li>
+        <li>Add the blended greens, maize flour, and salt. Simmer for <strong>15–20 minutes</strong> on low flame, stirring occasionally.</li>
+        <li>Finish with a generous spoon of <strong>ghee or butter</strong> for that royal Punjabi touch <span class="butter-icon">🧈</span></li>
+      </ul>
+    </div>
+
+    <div class="serving-suggestion">
+      🌾 Serve Piping Hot with <strong>Makki di Roti</strong> and a Glass of <strong>Chilled Lassi</strong> 🥛<br>
+      <em>A True Taste of Punjab!</em>
+    </div>
+  </div>
+
+  <footer>
+    <p>🧡 Made with Love in Punjab 🧡</p>
+    <p>Traditional Indian Cuisine | Sat Sri Akal!</p>
+  </footer>
+
+</body>
+</html>
