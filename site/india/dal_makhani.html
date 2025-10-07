@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dal Makhani - Global Recipe Book</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      min-height: 100vh;
+      padding: 20px;
+      color: #2c2c2c;
+    }
+
+    .back-link {
+      display: inline-block;
+      color: #a0522d;
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .recipe-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fffdf7;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .recipe-header {
+      background: linear-gradient(135deg, #c68642 0%, #8b4513 100%);
+      padding: 40px;
+      text-align: center;
+      color: white;
+    }
+
+    .recipe-header h1 {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .cuisine-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.2);
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 1.1em;
+      backdrop-filter: blur(10px);
+    }
+
+    .recipe-image-container {
+      position: relative;
+      max-width: 500px;
+      margin: -50px auto 0;
+      padding: 0 20px;
+      z-index: 10;
+    }
+
+    .recipe-image {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      border: 5px solid white;
+    }
+
+    .recipe-content {
+      padding: 60px 40px 40px;
+    }
+
+    .description {
+      text-align: center;
+      font-size: 1.1em;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 40px;
+      padding: 20px;
+      background: #fff6e5;
+      border-radius: 10px;
+      border-left: 4px solid #c68642;
+    }
+
+    .section {
+      margin-bottom: 35px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.8em;
+      color: #8b4513;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #ffe6c1;
+    }
+
+    .icon {
+      font-size: 1.2em;
+    }
+
+    .ingredients-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .ingredient-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .ingredient-item:hover {
+      background: #fff0da;
+      transform: translateX(5px);
+    }
+
+    .ingredient-item::before {
+      content: "🥣";
+      font-size: 1.5em;
+      min-width: 30px;
+    }
+
+    .ingredient-item:nth-child(2)::before { content: "🫘"; }
+    .ingredient-item:nth-child(3)::before { content: "🍅"; }
+    .ingredient-item:nth-child(4)::before { content: "🥛"; }
+    .ingredient-item:nth-child(5)::before { content: "🧈"; }
+    .ingredient-item:nth-child(6)::before { content: "🧅"; }
+    .ingredient-item:nth-child(7)::before { content: "🧄"; }
+    .ingredient-item:nth-child(8)::before { content: "🌶️"; }
+    .ingredient-item:nth-child(9)::before { content: "💧"; }
+
+    .instructions-list {
+      counter-reset: step-counter;
+      list-style: none;
+    }
+
+    .instruction-step {
+      counter-increment: step-counter;
+      position: relative;
+      padding: 20px 20px 20px 70px;
+      margin-bottom: 15px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      line-height: 1.6;
+      transition: all 0.3s ease;
+    }
+
+    .instruction-step:hover {
+      background: #fff0da;
+      transform: translateX(5px);
+    }
+
+    .instruction-step::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #c68642 0%, #8b4513 100%);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    .serving-tip {
+      background: linear-gradient(135deg, #ffe6c1 0%, #fff8e7 100%);
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    .footer {
+      background: #f8f9fa;
+      padding: 25px;
+      text-align: center;
+      border-top: 3px solid #ffe6c1;
+      margin-top: 40px;
+    }
+
+    .contributor {
+      font-size: 1.1em;
+      color: #555;
+    }
+
+    .contributor strong {
+      color: #8b4513;
+      font-size: 1.2em;
+    }
+
+    @media (max-width: 768px) {
+      .recipe-header h1 {
+        font-size: 1.8em;
+      }
+      
+      .recipe-content {
+        padding: 40px 20px 20px;
+      }
+      
+      .instruction-step {
+        padding-left: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="../../index.html" class="back-link">← Back to Home</a>
+
+  <main class="recipe-container">
+    <div class="recipe-header">
+      <h1>Dal Makhani</h1>
+      <div class="cuisine-tag">
+        🇮🇳 Cuisine: India / Punjabi Classic
+      </div>
+    </div>
+
+    <div class="recipe-image-container">
+      <img src="../../assets/india/dal_makhani.jpg" alt="Dal Makhani" class="recipe-image">
+    </div>
+
+    <div class="recipe-content">
+      <div class="description">
+        Dal Makhani is a rich, creamy North Indian delicacy made from whole black lentils and red kidney beans, slow-cooked in butter and cream. Its smoky aroma and velvety texture make it one of the most loved dishes in Indian cuisine — perfect for celebrations or cozy dinners.
+      </div>
+
+      <section class="section">
+        <h2 class="section-header">
+          <span class="icon">🛒</span>
+          Ingredients
+        </h2>
+        <div class="ingredients-grid">
+          <div class="ingredient-item">1 cup whole black lentils (urad dal)</div>
+          <div class="ingredient-item">1/4 cup red kidney beans (rajma)</div>
+          <div class="ingredient-item">1 cup tomato puree</div>
+          <div class="ingredient-item">1/2 cup fresh cream</div>
+          <div class="ingredient-item">3 tbsp butter or ghee</div>
+          <div class="ingredient-item">1 medium onion, finely chopped</div>
+          <div class="ingredient-item">1 tbsp ginger-garlic paste</div>
+          <div class="ingredient-item">1 tsp red chili powder, 1/2 tsp garam masala, salt to taste</div>
+          <div class="ingredient-item">2 cups water (for cooking)</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-header">
+          <span class="icon">👨‍🍳</span>
+          Instructions
+        </h2>
+        <ol class="instructions-list">
+          <li class="instruction-step">Soak urad dal and rajma overnight. Pressure cook with 2 cups of water until soft and mushy.</li>
+          <li class="instruction-step">In a pan, heat butter or ghee. Add onions and sauté until golden brown.</li>
+          <li class="instruction-step">Add ginger-garlic paste and cook for a minute until aromatic. Stir in tomato puree and cook until oil separates.</li>
+          <li class="instruction-step">Add the cooked dal and rajma along with water. Mix well and simmer for 15–20 minutes.</li>
+          <li class="instruction-step">Add cream, chili powder, garam masala, and salt. Simmer for 10 minutes until creamy and flavorful.</li>
+          <li class="instruction-step">Finish with a dollop of butter and drizzle of cream. Optionally, add a charcoal smoke for authentic restaurant aroma.</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <h2 class="section-header">
+          <span class="icon">🍽️</span>
+          Serving Tip
+        </h2>
+        <div class="serving-tip">
+          Serve piping hot with butter naan, tandoori roti, or steamed basmati rice. Garnish with fresh coriander and a swirl of cream for a luxurious touch!
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p class="contributor">Contributed by: <strong>Soumyadeep Batabyal</strong> 🇮🇳 (India)</p>
+      </footer>
+    </div>
+  </main>
+</body>
+</html>
