@@ -1,0 +1,128 @@
+name: Recipe File Validation
+
+on:
+  pull_request:
+    branches:
+      - '**'
+  push:
+    branches:
+      - '**'
+
+jobs:
+  recipe-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js (for future HTML/CSS/JS lint)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: 🔍 Recipe File Consistency Check
+        run: |
+          echo "🔍 Starting recipe file validation..."
+
+          # Get all new or modified PDFs and HTMLs in this PR
+          new_pdfs=$(git diff --name-only origin/main...HEAD | grep '\.pdf$' || true)
+          new_htmls=$(git diff --name-only origin/main...HEAD | grep '\.html$' || true)
+
+          fatal_errors=0
+
+          # -----------------------------
+          # 1️⃣ Check new PDFs
+          # -----------------------------
+          if [ -z "$new_pdfs" ]; then
+            echo "ℹ️ No new PDF files detected in this PR."
+          fi
+
+          for pdf in $new_pdfs; do
+            if [ ! -f "$pdf" ]; then
+              continue
+            fi
+
+            base="${pdf%.pdf}"
+            name=$(basename "$pdf" .pdf)
+            country=$(basename $(dirname "$pdf"))
+            jpg="assets/${country}/${name}.jpg"
+
+            echo "----------------------------------------"
+            echo "📄 New PDF detected: $pdf"
+
+            # ✅ Check naming convention: lowercase + underscores
+            if [[ "$name" =~ ^[a-z0-9_]+$ ]]; then
+              echo "✅ PDF follows naming convention: ${name}.pdf"
+            else
+              echo "❌ PDF does NOT follow naming convention (recipe_name.pdf)"
+              fatal_errors=$((fatal_errors+1))
+            fi
+
+            # ✅ Check matching JPG exists
+            if [ -f "$jpg" ]; then
+              echo "✅ Matching JPG found: ${name}.jpg"
+            else
+              echo "❌ Missing JPG for $name.pdf — please check spelling, case, or folder"
+              fatal_errors=$((fatal_errors+1))
+            fi
+
+            echo "----------------------------------------"
+          done
+
+          # -----------------------------
+          # 2️⃣ Check new HTMLs
+          # -----------------------------
+          if [ -z "$new_htmls" ]; then
+            echo "ℹ️ No new HTML files detected in this PR."
+          fi
+
+          for html in $new_htmls; do
+            if [ ! -f "$html" ]; then
+              continue
+            fi
+
+            base="${html%.html}"
+            name=$(basename "$html" .html)
+            country=$(basename $(dirname "$html"))
+            pdf="recipes/${country}/${name}.pdf"
+
+            echo "----------------------------------------"
+            echo "📄 New HTML detected: $html"
+
+            # ✅ HTML naming convention
+            if [[ "$name" =~ ^[a-z0-9_]+$ ]]; then
+              echo "✅ HTML follows naming convention: ${name}.html"
+            else
+              echo "❌ HTML does NOT follow naming convention (recipe_name.html)"
+              fatal_errors=$((fatal_errors+1))
+            fi
+
+            # ✅ Check corresponding PDF exists
+            if [ -f "$pdf" ]; then
+              echo "✅ Corresponding PDF exists: ${name}.pdf"
+            else
+              echo "❌ Corresponding PDF missing: ${name}.pdf"
+              fatal_errors=$((fatal_errors+1))
+            fi
+
+            # ✅ Check if linked in index.html
+            if grep -q "site/${country}/${name}.html" index.html; then
+              echo "✅ HTML linked in index.html"
+            else
+              echo "❌ HTML not linked in index.html"
+              fatal_errors=$((fatal_errors+1))
+            fi
+
+            echo "----------------------------------------"
+          done
+
+          # -----------------------------
+          # Exit with failure if any fatal errors
+          # -----------------------------
+          if [ "$fatal_errors" -gt 0 ]; then
+            echo "❌ Found $fatal_errors fatal issues. Failing the workflow."
+            exit 1
+          else
+            echo "✅ All recipe file checks passed successfully!"
+          fi

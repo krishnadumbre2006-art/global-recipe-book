@@ -1,3 +1,6 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+This project is licensed under the [MIT License](LICENSE) - feel free to contribute and use the code!
+
 ## Maintainer
    [Varad Dhoke](https://github.com/TickleFuse09)
 
