@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Brazilian Feijoada — Recipe</title>
+
+  <!-- Google Font (optional for nicer look) -->
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --paper:#fbf7f0;
+      --accent:#8b4a2f;
+      --muted:#7a6b60;
+      --leaf:#2f6f4e;
+      --shadow: rgba(0,0,0,0.08);
+      --card-width:900px;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255,255,255,0.6), transparent 20%),
+        linear-gradient(180deg,#f3efe9 0%, #efe7dd 100%);
+      color:#2b2b2b;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:40px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .card{
+      width:100%;
+      max-width:var(--card-width);
+      background: var(--paper);
+      border-radius:18px;
+      box-shadow: 0 10px 30px var(--shadow);
+      overflow:hidden;
+      border: 1px solid rgba(139,74,47,0.06);
+      display:flex;
+      gap:0;
+      flex-direction:column;
+    }
+
+    /* Header decorative banner */
+    .banner{
+      background:
+        linear-gradient(120deg, rgba(139,74,47,0.95), rgba(85,55,40,0.95)),
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="200"><defs><pattern id="p" width="40" height="40" patternUnits="userSpaceOnUse"><rect width="40" height="40" fill="%23ffffff33"/><circle cx="20" cy="20" r="2" fill="%23ffffff22"/></pattern></defs><rect width="100%" height="100%" fill="%23000000"/><rect width="100%" height="100%" fill="url(%23p)" opacity="0.06"/></svg>') center/cover no-repeat;
+      color:white;
+      padding:28px 32px;
+      display:flex;
+      align-items:center;
+      gap:18px;
+    }
+
+    .banner .title{
+      font-family: 'Libre Baskerville', serif;
+      font-size:28px;
+      line-height:1;
+      margin:0;
+      letter-spacing:0.2px;
+    }
+    .banner .subtitle{
+      margin:0;
+      font-size:13px;
+      color:rgba(255,255,255,0.9);
+      font-weight:300;
+    }
+
+    .content{
+      display:flex;
+      gap:32px;
+      padding:28px 32px 36px 32px;
+      flex-wrap:wrap;
+    }
+
+    .left, .right{
+      box-sizing:border-box;
+    }
+
+    .left{
+      flex:1 1 420px;
+      min-width:280px;
+    }
+
+    .right{
+      flex:1 1 380px;
+      min-width:260px;
+      border-left: 1px dashed rgba(139,74,47,0.08);
+      padding-left:28px;
+    }
+
+    h2{
+      font-family: 'Libre Baskerville', serif;
+      color:var(--accent);
+      margin:8px 0 12px 0;
+      font-size:20px;
+    }
+
+    p.lead{
+      margin:0 0 14px 0;
+      color:var(--muted);
+    }
+
+    ul.ingredients{
+      list-style: none;
+      padding:0;
+      margin:0 0 18px 0;
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:8px 18px;
+    }
+
+    ul.ingredients li{
+      background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.2));
+      border-radius:8px;
+      padding:8px 10px;
+      font-size:14px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03) inset;
+    }
+
+    ol.steps{
+      padding-left:18px;
+      margin:0;
+      color:#333;
+      line-height:1.55;
+      font-size:15px;
+    }
+
+    .meta{
+      font-size:13px;
+      color:var(--muted);
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:8px;
+    }
+
+    .note{
+      font-size:13px;
+      color:var(--muted);
+      background: linear-gradient(180deg,#fffaf2,#fff8f0);
+      border-radius:8px;
+      padding:10px;
+      border:1px solid rgba(139,74,47,0.05);
+    }
+
+    .serve{
+      margin-top:14px;
+      display:flex;
+      gap:8px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .chip{
+      background:rgba(47,111,78,0.08);
+      color:var(--leaf);
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:13px;
+      border:1px solid rgba(47,111,78,0.08);
+    }
+
+    .footer{
+      padding:18px 28px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background: linear-gradient(180deg, rgba(0,0,0,0.01), rgba(0,0,0,0.02));
+      border-top:1px solid rgba(139,74,47,0.03);
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    /* Print-friendly adjustments */
+    @media print{
+      body{background: white; padding:0}
+      .card{box-shadow:none; border-radius:0; max-width:100%}
+      .banner{background-color: #8b4a2f !important; color:white}
+      .right{border-left: none; padding-left:0}
+    }
+
+    /* Responsive tweaks */
+    @media (max-width:880px){
+      .content{padding:20px}
+      .right{border-left:none; padding-left:0; margin-top:14px}
+    }
+  </style>
+</head>
+<body>
+  <article class="card" role="article" aria-label="Brazilian Feijoada recipe">
+    <header class="banner">
+      <div style="display:flex;flex-direction:column;">
+        <h1 class="title">🇧🇷 Feijoada — Brazilian Black Bean Stew</h1>
+        <p class="subtitle">A soulful, slow-cooked classic — rich, smoky and traditionally served with rice, orange slices, farofa and kale.</p>
+      </div>
+      <div style="margin-left:auto;text-align:right; font-size:13px;">
+        <div style="font-weight:600">Serves: 6–8</div>
+        <div style="opacity:0.95">Prep: 30 min · Cook: 2–3 hrs</div>
+      </div>
+    </header>
+
+    <section class="content">
+      <div class="left">
+        <h2>Description</h2>
+        <p class="lead">
+          Feijoada is Brazil’s most beloved national dish — a hearty black bean stew simmered with smoked and salted pork, sausages and spices. Originally a dish of resourcefulness, it blends flavors from Indigenous, African and Portuguese traditions. Serve it in generous portions with white rice, sautéed collard greens (couve), orange slices, and farofa (toasted cassava flour).
+        </p>
+
+        <h2>Ingredients</h2>
+        <ul class="ingredients" aria-label="Ingredients list">
+          <li><strong>500 g</strong> black beans (about 2½ cups)</li>
+          <li><strong>300 g</strong> pork shoulder, diced</li>
+          <li><strong>200 g</strong> smoked pork ribs or bacon, chopped</li>
+          <li><strong>200 g</strong> chorizo or Portuguese sausage, sliced</li>
+          <li><strong>150 g</strong> smoked sausage (e.g., linguica), sliced</li>
+          <li><strong>1</strong> large onion, finely chopped</li>
+          <li><strong>4</strong> garlic cloves, minced</li>
+          <li><strong>2</strong> bay leaves</li>
+          <li>1 tsp smoked paprika</li>
+          <li>Salt and black pepper, to taste</li>
+          <li>2 tbsp vegetable oil (or lard)</li>
+          <li>Water or low-sodium stock, as needed</li>
+          <li>Fresh orange slices, for serving</li>
+          <li>Cooked white rice, sautéed collard greens, and farofa to serve</li>
+        </ul>
+
+        <h2>Instructions</h2>
+        <ol class="steps">
+          <li><strong>Soak the beans:</strong> Rinse the black beans and soak them in cold water for 6–8 hours or overnight. Drain before cooking. (Quick option: boil 2 minutes and let sit 1 hour.)</li>
+
+          <li><strong>Precook salted pork (if using):</strong> If any cuts are very salty, rinse and soak briefly. Parboil salted meats for 10 minutes and discard the water to reduce saltiness; then rinse and set aside.</li>
+
+          <li><strong>Brown the meats:</strong> In a large heavy pot or Dutch oven, heat the oil over medium-high. Brown the diced pork shoulder until golden. Add smoked ribs/bacon and brown. Remove browned meat and set aside.</li>
+
+          <li><strong>Sauté aromatics:</strong> In the same pot, lower heat and sauté the onion until translucent (5–7 min). Add garlic and smoked paprika; cook 1 minute until fragrant.</li>
+
+          <li><strong>Add beans and liquids:</strong> Return the meats to the pot. Add drained beans, bay leaves and enough water or stock to cover by ~2–3 cm (about 1.5–2 liters). Bring to a gentle boil, then reduce heat to a low simmer.</li>
+
+          <li><strong>Simmer slowly:</strong> Cover partially and simmer gently for 1½ to 2½ hours, stirring occasionally, until beans are tender and meats are falling-apart tender. Skim foam or excess fat as needed.</li>
+
+          <li><strong>Add sausages:</strong> About 30 minutes before the end of cooking, add chorizo/linguica or other smoked sausages so they heat through and release flavor.</li>
+
+          <li><strong>Adjust texture & seasoning:</strong> If the stew is too thin, mash a few beans against the pot side and stir to thicken. Season with salt and plenty of black pepper to taste (remember smoked meats add salt).</li>
+
+          <li><strong>Rest & serve:</strong> Let feijoada rest 10–15 minutes off the heat. Serve with steamed white rice, sautéed collard greens (thinly sliced and quickly sautéed with garlic), orange slices and farofa on the side.</li>
+        </ol>
+
+        <div style="margin-top:14px" class="note">
+          <strong>Chef’s tips:</strong> For extra depth, brown a small handful of bacon lardons at the start and finish with a splash of aged vinegar or a squeeze of orange to brighten the finish. Feijoada often tastes even better the next day.
+        </div>
+      </div>
+
+      <aside class="right" aria-label="Recipe details">
+        <div class="meta">
+          <div><strong>Yield:</strong> 6–8 servings</div>
+          <div><strong>Prep time:</strong> 30 minutes (plus soaking)</div>
+          <div><strong>Cook time:</strong> 2–3 hours</div>
+        </div>
+
+        <h2>Notes & Variations</h2>
+        <p class="note">
+          <strong>Vegetarian option:</strong> Replace meats with smoked tempeh, mushrooms and extra root vegetables; finish with smoked paprika and liquid smoke for depth.<br><br>
+          <strong>Classic touches:</strong> Use a mix of salted pork, smoked ribs and sausages for authentic texture and flavor. Serve with lime/orange wedges to cut richness.
+        </p>
+
+        <h2>Sides to serve</h2>
+        <div class="serve">
+          <div class="chip">Steamed white rice</div>
+          <div class="chip">Sautéed collard greens (couve)</div>
+          <div class="chip">Farofa</div>
+          <div class="chip">Orange slices</div>
+          <div class="chip">Hot sauce (optional)</div>
+        </div>
+
+        <h2 style="margin-top:16px">Storage</h2>
+        <p style="font-size:14px; color:var(--muted);">
+          Refrigerate in airtight container up to 4 days. Feijoada freezes well for up to 3 months. Thaw overnight and reheat gently on low heat, adding a splash of water if needed.
+        </p>
+
+        <h2 style="margin-top:12px">Nutrition (est.)</h2>
+        <p style="font-size:13px; color:var(--muted);">
+          Per serving (estimate): 650–800 kcal depending on cuts of meat; rich in protein and fiber.
+        </p>
+      </aside>
+    </section>
+
+    <footer class="footer">
+      <div>Recipe crafted with a Brazilian touch — enjoy!</div>
+      <div>© Feijoada · Classic Recipe</div>
+    </footer>
+  </article>
+</body>
+</html>
