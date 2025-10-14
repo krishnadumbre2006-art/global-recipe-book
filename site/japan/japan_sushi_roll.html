@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Sushi Roll Recipe — Veg & Non-Veg</title>
+    <style>
+        :root {
+            --bg: #f7fafc;
+            --card: #ffffff;
+            --muted: #6b7280;
+            --accent: #0ea5a4;
+            --shadow: 0 6px 20px rgba(16, 24, 40, 0.08);
+            --radius: 12px;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            color: #0f172a;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(180deg, #f8fbfb 0%, var(--bg) 100%);
+            padding: 28px;
+            line-height: 1.45;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 330px;
+            gap: 22px;
+            align-items: start;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .sushi-thumb {
+            width: 100px;
+            height: 100px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .sushi-thumb:hover {
+            transform: scale(1.05);
+        }
+
+
+        header {
+            grid-column: 1/-1;
+            margin-bottom: 6px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header h1 {
+            font-size: 20px;
+            margin: 0
+        }
+
+        header p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .left .meta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .meta .pill {
+            background: #eef2f2;
+            color: #0b7280;
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .tab {
+            padding: 8px 12px;
+            border-radius: 999px;
+            cursor: pointer;
+            background: #f3f7f7;
+            color: #064;
+            font-weight: 600;
+        }
+
+        .tab.active {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 6px 16px rgba(14, 165, 164, 0.12)
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            margin: 0 0 8px 0;
+            font-size: 16px
+        }
+
+        .ingredients {
+            margin-bottom: 12px;
+        }
+
+        .ingredient-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 8px;
+        }
+
+        .ingredient-item {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .ingredient-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .quantity {
+            min-width: 64px;
+            font-weight: 700;
+            font-size: 14px;
+            color: #0f172a;
+            text-align: left;
+        }
+
+        .name {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            border: 0;
+            padding: 8px 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            background: #111827;
+            color: #fff;
+        }
+
+        .btn.ghost {
+            background: transparent;
+            color: var(--muted);
+            border: 1px solid #e6eef0;
+        }
+
+        .small {
+            padding: 6px 8px;
+            font-size: 13px;
+            border-radius: 8px;
+        }
+
+        .steps {
+            margin-top: 12px;
+        }
+
+        .step {
+            background: #fbfdfe;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #eef6f6;
+        }
+
+        .step h3 {
+            margin: 0 0 6px 0;
+            font-size: 14px;
+        }
+
+        .toggle-step {
+            float: right;
+            cursor: pointer;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* right column */
+        .right .card {
+            position: sticky;
+            top: 26px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #eef6f6;
+            font-size: 14px;
+            color: var(--muted)
+        }
+
+        .timer {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-top: 8px;
+        }
+
+        .timer-display {
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .servings {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-top: 8px;
+        }
+
+        .servings input[type="number"] {
+            width: 70px;
+            padding: 6px 8px;
+            border-radius: 8px;
+            border: 1px solid #e6eef0;
+        }
+
+        footer {
+            grid-column: 1/-1;
+            margin-top: 18px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* responsive */
+        @media (max-width:900px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 18px;
+            }
+
+            .right .card {
+                position: static;
+            }
+        }
+
+        /* print-friendly */
+        @media print {
+            body {
+                padding: 6mm;
+                background: white
+            }
+
+            header .controls,
+            .tab,
+            .controls .btn.ghost {
+                display: none
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="header-left">
+                <img src="../../assets/japan/japan_sushi_roll.jpg" alt="Sushi" class="sushi-thumb">
+                <h1>Sushi Roll Recipe — Veg & Non-Veg</h1>
+                <p>Prep: 45 mins · Cook: 15 mins · Total: 1 hr 10 mins · Difficulty: Easy–Medium</p>
+            </div>
+            <div class="controls">
+                <button class="btn" id="printBtn" title="Print recipe">Print</button>
+                <button class="btn ghost" id="resetChecks">Uncheck Ingredients</button>
+            </div>
+        </header>
+
+        <main class="left">
+            <section class="card">
+                <div class="meta">
+                    <span class="pill">Maki (Rolled sushi)</span>
+                    <span class="pill">Serves: <strong id="servesDisplay">4</strong></span>
+                    <span class="pill">Storage: Best within 24 hours</span>
+                </div>
+
+                <div class="tabs" role="tablist" aria-label="Recipe types">
+                    <button class="tab active" role="tab" data-tab="veg" aria-selected="true">Veg Sushi Roll</button>
+                    <button class="tab" role="tab" data-tab="nonveg" aria-selected="false">Non-Veg Sushi Roll</button>
+                </div>
+
+                <div style="display:flex; gap:12px; align-items:center; margin-bottom:12px;">
+                    <label style="font-weight:700; color:var(--muted)">Scale servings:</label>
+                    <input id="servingsInput" type="number" min="1" value="4"
+                        style="width:74px; padding:6px 8px; border-radius:8px; border:1px solid #e6eef0;">
+                    <button class="btn small" id="scaleBtn">Apply</button>
+                </div>
+
+                <div class="grid-2">
+                    <div>
+                        <h2>For Sushi Rice</h2>
+                        <div class="ingredients">
+                            <ul class="ingredient-list" id="riceIngredients">
+                                <li class="ingredient-item">
+                                    <input type="checkbox" id="i-rice" />
+                                    <span class="quantity" data-base="1.5">1½</span>
+                                    <span class="name">cups uncooked short-grain sushi rice</span>
+                                </li>
+                                <li class="ingredient-item">
+                                    <input type="checkbox" id="i-water" />
+                                    <span class="quantity" data-base="2">2</span>
+                                    <span class="name">cups water</span>
+                                </li>
+                                <li class="ingredient-item">
+                                    <input type="checkbox" id="i-rice-vinegar" />
+                                    <span class="quantity" data-base="3">3</span>
+                                    <span class="name">tbsp rice vinegar</span>
+                                </li>
+                                <li class="ingredient-item">
+                                    <input type="checkbox" id="i-sugar" />
+                                    <span class="quantity" data-base="1">1</span>
+                                    <span class="name">tbsp sugar</span>
+                                </li>
+                                <li class="ingredient-item">
+                                    <input type="checkbox" id="i-salt" />
+                                    <span class="quantity" data-base="1">1</span>
+                                    <span class="name">tsp salt</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2>Veg Sushi Filling</h2>
+                        <div class="ingredients">
+                            <ul class="ingredient-list" id="vegIngredients">
+                                <li class="ingredient-item"><input type="checkbox"><span class="quantity"
+                                        data-base="0.5">½</span><span class="name"> cucumber, cut into strips</span>
+                                </li>
+                                <li class="ingredient-item"><input type="checkbox"><span class="quantity"
+                                        data-base="1">1</span><span class="name"> small carrot, julienned</span></li>
+                                <li class="ingredient-item"><input type="checkbox"><span class="quantity"
+                                        data-base="1">1</span><span class="name"> avocado, sliced</span></li>
+                                <li class="ingredient-item"><input type="checkbox"><span class="quantity"
+                                        data-base="1">1</span><span class="name"> bell pepper, thinly sliced</span></li>
+                                <li class="ingredient-item"><input type="checkbox"><span class="quantity"
+                                        data-base="2">2</span><span class="name"> tbsp cream cheese or mayo
+                                        (optional)</span></li>
+                                <li class="ingredient-item"><input type="checkbox"><span class="quantity"
+                                        data-base="4">4</span><span class="name"> sheets nori</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="nonVegBlock" style="display:none; margin-top:6px;">
+                    <h2>Non-Veg Filling</h2>
+                    <ul class="ingredient-list" id="nonvegIngredients">
+                        <li class="ingredient-item"><input type="checkbox"><span class="quantity"
+                                data-base="150">150</span><span class="name"> g raw or smoked salmon (sushi-grade) or
+                                tuna</span></li>
+                    </ul>
+                </div>
+
+                <div style="display:flex; gap:8px; align-items:center; margin-top:10px;">
+                    <button class="btn" id="checkAll">Check All Ingredients</button>
+                    <button class="btn ghost" id="copyList">Copy Ingredients</button>
+                </div>
+
+                <div class="steps">
+                    <h2>Method</h2>
+
+                    <div class="step" data-step="1">
+                        <h3>1. Cook the rice <span class="toggle-step" aria-hidden="true">▼</span></h3>
+                        <div class="step-body">
+                            <p>Place rice and water in a saucepan over high heat, bring to a boil, reduce heat to very
+                                low. Cover tightly and simmer until water is absorbed (~15 minutes). Remove from heat
+                                and let stand covered for 10 minutes.</p>
+                        </div>
+                    </div>
+
+                    <div class="step" data-step="2">
+                        <h3>2. Season the rice <span class="toggle-step" aria-hidden="true">▼</span></h3>
+                        <div class="step-body">
+                            <p>Mix rice vinegar, sugar and salt until dissolved. Fluff rice with a fork, transfer to a
+                                bowl and pour vinegar mixture in; stir to coat. Spread rice on a parchment or a wide
+                                tray and fan until cool. Cover with damp towel.</p>
+                        </div>
+                    </div>
+
+                    <div class="step" data-step="3">
+                        <h3>3. Prepare filling <span class="toggle-step" aria-hidden="true">▼</span></h3>
+                        <div class="step-body">
+                            <p>Sprinkle avocado with lemon juice. Prepare vegetables and fish (if using) into long thin
+                                strips.</p>
+                        </div>
+                    </div>
+
+                    <div class="step" data-step="4">
+                        <h3>4. Assemble & roll <span class="toggle-step" aria-hidden="true">▼</span></h3>
+                        <div class="step-body">
+                            <p>Spread a thin layer of sesame on the mat (optional). Put ~1/2 cup cooled rice on nori,
+                                arrange fillings in a line, lift mat edge and roll tightly into a cylinder. Repeat to
+                                make 4 rolls. Slice each roll into 6–8 pieces.</p>
+                        </div>
+                    </div>
+
+                    <div class="step" data-step="5">
+                        <h3>5. Serve & store <span class="toggle-step" aria-hidden="true">▼</span></h3>
+                        <div class="step-body">
+                            <p>Serve with soy sauce, pickled ginger and wasabi. Store leftovers in an airtight container
+                                with a damp towel; best consumed within 24 hours. Keep fish sushi refrigerated (below
+                                5°C) and do not leave raw fish at room temperature for long.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="right">
+            <div class="card">
+                <h2 style="margin-top:0">Quick Info</h2>
+                <div class="info-row">
+                    <div>Prep Time</div>
+                    <div>45 mins</div>
+                </div>
+                <div class="info-row">
+                    <div>Cook Time</div>
+                    <div>15 mins</div>
+                </div>
+                <div class="info-row">
+                    <div>Total Time</div>
+                    <div>1 hr 10 mins</div>
+                </div>
+                <div class="info-row">
+                    <div>Difficulty</div>
+                    <div>Easy-Medium</div>
+                </div>
+
+                <div style="margin-top:12px">
+                    <h3 style="margin:0 0 6px 0">Cook Timer</h3>
+                    <div class="timer">
+                        <div class="timer-display" id="timerDisplay">15:00</div>
+                        <div style="display:flex; gap:8px;">
+                            <button class="btn small" id="timerStart">Start</button>
+                            <button class="btn small ghost" id="timerPause">Pause</button>
+                            <button class="btn small ghost" id="timerReset">Reset</button>
+                        </div>
+                    </div>
+                    <p style="margin:8px 0 0 0; color:var(--muted); font-size:13px;">Timer default: 15 minutes (rice
+                        simmer time)</p>
+                </div>
+
+                <div style="margin-top:12px">
+                    <h3 style="margin:0 0 6px 0">Servings</h3>
+                    <div class="servings">
+                        <input type="number" id="servingsControl" min="1" value="4" aria-label="Number of servings">
+                        <button class="btn small" id="applyServings">Apply</button>
+                    </div>
+                    <p style="margin:8px 0 0 0; color:var(--muted); font-size:13px;">Changing servings scales numeric
+                        quantities shown next to ingredients.</p>
+                </div>
+
+                <div style="margin-top:12px">
+                    <h3 style="margin:0 0 6px 0">Notes</h3>
+                    <ul style="margin:0; padding-left:18px; color:var(--muted); font-size:14px;">
+                        <li>Use sushi-grade fish if making non-veg rolls.</li>
+                        <li>Best consumed within 24 hours — avoid freezing.</li>
+                        <li>Keep raw fish refrigerated below 5°C until serving.</li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <footer>
+            Recipe adapted from uploaded document. Enjoy your sushi! 🍣
+        </footer>
+    </div>
+
+    <script>
+        // --- Tab switching (Veg / Non-Veg) ---
+        (function () {
+            const tabs = document.querySelectorAll('.tab');
+            const nonVegBlock = document.getElementById('nonVegBlock');
+            const servesDisplay = document.getElementById('servesDisplay');
+
+            function activateTab(name) {
+                tabs.forEach(t => {
+                    if (t.dataset.tab === name) {
+                        t.classList.add('active');
+                        t.setAttribute('aria-selected', 'true');
+                    } else {
+                        t.classList.remove('active');
+                        t.setAttribute('aria-selected', 'false');
+                    }
+                });
+                nonVegBlock.style.display = (name === 'nonveg') ? 'block' : 'none';
+            }
+
+            tabs.forEach(t => t.addEventListener('click', () => {
+                activateTab(t.dataset.tab);
+            }));
+
+            // default
+            activateTab('veg');
+
+            // Check/uncheck controls
+            document.getElementById('checkAll').addEventListener('click', () => {
+                document.querySelectorAll('.ingredient-list input[type="checkbox"]').forEach(cb => cb.checked = true);
+            });
+            document.getElementById('resetChecks').addEventListener('click', () => {
+                document.querySelectorAll('.ingredient-list input[type="checkbox"]').forEach(cb => cb.checked = false);
+            });
+
+            // Copy ingredients to clipboard
+            document.getElementById('copyList').addEventListener('click', async () => {
+                const items = Array.from(document.querySelectorAll('.ingredient-list li')).map(li => {
+                    const qty = li.querySelector('.quantity') ? li.querySelector('.quantity').textContent.trim() + ' ' : '';
+                    const name = li.querySelector('.name') ? li.querySelector('.name').textContent.trim() : li.textContent.trim();
+                    return qty + name;
+                });
+                const text = 'Ingredients:\\n' + items.join('\\n');
+                try {
+                    await navigator.clipboard.writeText(text);
+                    alert('Ingredients copied to clipboard.');
+                } catch (e) {
+                    // fallback
+                    const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+                    document.execCommand('copy'); ta.remove();
+                    alert('Ingredients copied (fallback).');
+                }
+            });
+
+            // Print
+            document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+            // Toggle steps collapse
+            document.querySelectorAll('.step').forEach(step => {
+                const toggle = step.querySelector('.toggle-step');
+                const body = step.querySelector('.step-body');
+                toggle.addEventListener('click', () => {
+                    const isHidden = body.style.display === 'none';
+                    body.style.display = isHidden ? '' : 'none';
+                    toggle.textContent = isHidden ? '▼' : '▲';
+                });
+                // default visible
+                body.style.display = '';
+            });
+
+            // --- Timer ---
+            let timerSeconds = 15 * 60;
+            let timerInterval = null;
+            const timerDisplay = document.getElementById('timerDisplay');
+
+            function formatTime(sec) {
+                const m = Math.floor(sec / 60).toString().padStart(2, '0');
+                const s = (sec % 60).toString().padStart(2, '0');
+                return m + ':' + s;
+            }
+            timerDisplay.textContent = formatTime(timerSeconds);
+
+            document.getElementById('timerStart').addEventListener('click', () => {
+                if (timerInterval) return;
+                timerInterval = setInterval(() => {
+                    if (timerSeconds <= 0) {
+                        clearInterval(timerInterval); timerInterval = null;
+                        timerDisplay.textContent = '00:00';
+                        // beep (short)
+                        try { new Audio('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=').play(); } catch (e) { }
+                        return;
+                    }
+                    timerSeconds--;
+                    timerDisplay.textContent = formatTime(timerSeconds);
+                }, 1000);
+            });
+
+            document.getElementById('timerPause').addEventListener('click', () => {
+                if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+            });
+            document.getElementById('timerReset').addEventListener('click', () => {
+                if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+                timerSeconds = 15 * 60;
+                timerDisplay.textContent = formatTime(timerSeconds);
+            });
+
+            // --- Servings scaling ---
+            // Numeric quantities should have data-base attribute with base amount for 4 servings (the sample).
+            function scaleAll(servings) {
+                // Update display badges
+                document.getElementById('servesDisplay').textContent = servings;
+                // For all .quantity with data-base, multiply
+                document.querySelectorAll('.quantity').forEach(span => {
+                    const base = parseFloat(span.getAttribute('data-base'));
+                    if (!isNaN(base)) {
+                        // base is per 4 servings by author; scale proportionally
+                        const scaled = (base * (servings / 4));
+                        // nice display: keep halves as ½, round small decimals
+                        if (Math.abs(scaled - Math.round(scaled)) < 1e-6) {
+                            span.textContent = String(Math.round(scaled));
+                        } else {
+                            // show common fractions .5 as ½ else to 2 decimals
+                            if (Math.abs(scaled - Math.round(scaled - 0.5)) < 1e-6 || Math.abs(scaled - (Math.round(scaled) - 0.5)) < 1e-6) {
+                                // represent 0.5 as ½
+                                const whole = Math.floor(scaled);
+                                if (whole === 0) span.textContent = '½';
+                                else span.textContent = whole + '½';
+                            } else {
+                                span.textContent = +(Math.round(scaled * 100) / 100).toString();
+                            }
+                        }
+                    }
+                });
+            }
+
+            // initial
+            scaleAll(4);
+
+            document.getElementById('scaleBtn').addEventListener('click', () => {
+                const v = Number(document.getElementById('servingsInput').value) || 4;
+                document.getElementById('servingsControl').value = v;
+                scaleAll(v);
+            });
+
+            document.getElementById('applyServings').addEventListener('click', () => {
+                const v = Number(document.getElementById('servingsControl').value) || 4;
+                document.getElementById('servingsInput').value = v;
+                document.getElementById('servesDisplay').textContent = v;
+                scaleAll(v);
+            });
+
+            // also allow Enter on input
+            document.getElementById('servingsInput').addEventListener('keydown', (e) => { if (e.key === 'Enter') document.getElementById('scaleBtn').click(); });
+            document.getElementById('servingsControl').addEventListener('keydown', (e) => { if (e.key === 'Enter') document.getElementById('applyServings').click(); });
+
+            // Accessibility: focus outlines
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Tab') document.body.classList.add('show-focus');
+            });
+
+        })();
+    </script>
+</body>
+
+</html>
