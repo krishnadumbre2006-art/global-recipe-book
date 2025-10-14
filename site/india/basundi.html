@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Basundi — Recipe</title>
+  <style>
+    :root{
+      --bg:#fdf7f7;
+      --card:#ffffff;
+      --accent:#f97316;
+      --accent-2:#facc15;
+      --muted:#54606a;
+      --radius:14px;
+      --container:1100px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,'Helvetica Neue',Arial;background:linear-gradient(180deg,var(--bg),#fff5e6 60%);color:#0f172a;padding:36px 20px}
+    .wrap{max-width:var(--container);margin:0 auto;background:var(--card);border-radius:var(--radius);box-shadow:0 10px 30px rgba(2,6,23,0.08);overflow:hidden;border:1px solid rgba(2,6,23,0.04)}
+    header{padding:22px 26px;display:flex;gap:16px;align-items:center;background:linear-gradient(90deg, rgba(249,115,22,0.04), rgba(250,204,21,0.02));border-bottom:1px solid rgba(2,6,23,0.03)}
+    .logo{width:56px;height:56px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;font-weight:700;font-size:18px}
+    header h1{margin:0;font-size:20px}
+    header p{margin:0;color:var(--muted);font-size:13px}
+    .top{display:flex;gap:24px;padding:24px;align-items:flex-start;flex-wrap:wrap}
+    .left{flex:0 0 340px;min-width:260px}
+    .card-image{border-radius:12px;overflow:hidden;box-shadow:0 8px 20px rgba(2,6,23,0.06);border:1px solid rgba(2,6,23,0.04)}
+    .card-image img{display:block;width:100%;height:240px;object-fit:cover}
+    .right{flex:1;min-width:300px}
+    .meta{display:flex;gap:10px;align-items:center;margin-bottom:12px}
+    .badge{background:#fff5e6;padding:8px 10px;border-radius:10px;font-size:13px;color:var(--accent);border:1px solid rgba(249,115,22,0.06)}
+    h2.title{margin:6px 0 10px 0;font-size:22px;color:var(--accent)}
+    .desc{color:var(--muted);line-height:1.6;margin-bottom:12px}
+    .info-grid{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+    .info-item{background:#fff9f3;border:1px solid rgba(249,115,22,0.04);padding:12px;border-radius:10px;min-width:140px}
+    .info-item strong{display:block;color:#0b1220}
+    .tags{margin-top:12px}
+    .tag{display:inline-block;background:rgba(249,115,22,0.08);color:var(--accent);padding:6px 8px;border-radius:999px;font-size:12px;margin-right:8px}
+    .bottom{padding:26px;border-top:1px solid rgba(2,6,23,0.03);display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .box{background:linear-gradient(180deg,#fff,#fff8f0);padding:18px;border-radius:12px;border:1px solid rgba(2,6,23,0.03)}
+    .section-title{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--accent);margin-bottom:10px}
+    .time{font-size:14px;color:var(--muted)}
+    ul.ingredients{padding-left:18px;margin:0}
+    ul.ingredients li{margin-bottom:8px}
+    ol.steps{padding-left:18px;margin:0}
+    ol.steps li{margin-bottom:10px}
+    .notes{font-size:14px;color:var(--muted);line-height:1.5}
+    footer.card-footer{padding:16px 18px;border-top:1px solid rgba(2,6,23,0.03);display:flex;justify-content:space-between;align-items:center}
+    .btn{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:600}
+    .muted-btn{background:transparent;border:1px solid rgba(2,6,23,0.06);padding:10px 12px;border-radius:10px;color:var(--muted);cursor:pointer}
+    @media (max-width:900px){.bottom{grid-template-columns:1fr}.left{flex:1 1 100%}.right{flex:1 1 100%}.card-image img{height:200px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">BS</div>
+      <div>
+        <h1>Basundi</h1>
+        <p>Rich and creamy Indian dessert made by simmering milk with sugar, cardamom, and nuts.</p>
+      </div>
+    </header>
+
+    <section class="top">
+      <div class="left">
+        <figure class="card-image">
+          <img src="../../assets/india/Basundi.jpg" alt="Basundi Dessert">
+        </figure>
+      </div>
+
+      <div class="right">
+        <div class="meta">
+          <div class="badge">Indian Sweet</div>
+          <div class="badge">Milk-Based</div>
+          <div class="badge">Serves 4</div>
+        </div>
+
+        <h2 class="title">A creamy, traditional Basundi</h2>
+        <p class="desc">Basundi is a classic Indian dessert that’s creamy, mildly sweet, and flavored with cardamom and saffron. Garnished with nuts, it’s perfect for festivals or special occasions.</p>
+
+        <div class="info-grid">
+          <div class="info-item"><strong>Prep</strong><span class="time">10 minutes</span></div>
+          <div class="info-item"><strong>Cook</strong><span class="time">40 minutes</span></div>
+          <div class="info-item"><strong>Difficulty</strong><span class="time">Medium</span></div>
+        </div>
+
+        <div class="tags" style="margin-top:12px">
+          <span class="tag">Festive</span>
+          <span class="tag">Sweet</span>
+          <span class="tag">Creamy</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="bottom">
+      <div class="box">
+        <div class="section-title">Ingredients</div>
+        <ul class="ingredients">
+          <li>1 liter full-fat milk</li>
+          <li>1/4 cup sugar (adjust to taste)</li>
+          <li>4-5 green cardamom pods, crushed</li>
+          <li>A pinch of saffron strands (optional)</li>
+          <li>2 tbsp chopped almonds and pistachios</li>
+          <li>1 tsp rose water (optional)</li>
+        </ul>
+
+        <div style="height:12px"></div>
+        <div class="section-title">Types of Basundi</div>
+        <ul class="ingredients">
+            <li><strong>Plain Basundi:</strong> Traditional milk thickened with sugar and cardamom.</li>
+            <li><strong>Angoori Basundi:</strong> Small milk dumplings (rasgulla-like) added to thickened milk.</li>
+            <li><strong>Kesar Basundi:</strong> Flavored with saffron for a rich aroma and golden color.</li>
+            <li><strong>Badam/Pista Basundi:</strong> Garnished with almonds and pistachios, often blended into the milk.</li>
+            <li><strong>Malai Basundi:</strong> Extra creamy version made by adding fresh cream or condensed milk.</li>
+        </ul>
+      </div>
+
+
+      <div class="box">
+        <div class="section-title">Method</div>
+        <ol class="steps">
+          <li><strong>Boil milk:</strong> Pour milk into a heavy-bottomed pan and bring it to a gentle boil over medium heat. Stir frequently to prevent sticking.</li>
+          <li><strong>Simmer & reduce:</strong> Lower the heat and simmer, stirring occasionally, until the milk reduces to half its original volume (approx. 30–35 minutes).</li>
+          <li><strong>Add sugar & flavors:</strong> Add sugar, crushed cardamom, and saffron. Continue to simmer for 5–10 minutes until slightly thickened.</li>
+          <li><strong>Garnish:</strong> Stir in chopped nuts and rose water (if using). Let it cool slightly before serving.</li>
+          <li><strong>Serve:</strong> Basundi can be served warm or chilled in small bowls. Garnish with extra nuts or a few saffron strands.</li>
+        </ol>
+
+        <div style="height:12px"></div>
+        <div class="section-title">Tips & Variations</div>
+        <ul class="ingredients">
+          <li>For richer flavor, use condensed milk along with regular milk.</li>
+          <li>Adjust sugar according to personal preference.</li>
+          <li>Add a few drops of cardamom or nutmeg essence for aroma.</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="card-footer">
+      <div style="font-size:13px;color:var(--muted)">© Home Kitchen • Indian Sweets</div>
+      <div>
+        <button class="muted-btn" onclick="window.print()">Print Recipe</button>
+        <button class="btn" style="margin-left:10px" onclick="downloadHTML()">Download HTML</button>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    function downloadHTML(){
+      const html = `<!doctype html>\n${document.documentElement.outerHTML}`;
+      const blob = new Blob([html], {type: 'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'Basundi.html';
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
