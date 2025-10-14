@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brigadeiro Recipe</title>
+  <style>
+    :root{
+      --bg:#fff;
+      --card:#fff;
+      --accent:#d32f2f;
+      --muted:#666;
+      --maxw:800px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color: #222;
+    }
+    body{
+      background: linear-gradient(180deg,#fff 0%, #f7f7f8 100%);
+      margin:0; padding:32px; display:flex; justify-content:center; align-items:flex-start;
+    }
+    .container{
+      width:100%; max-width:var(--maxw); background:var(--card); border-radius:12px; box-shadow:0 8px 30px rgba(12,20,30,0.08); padding:28px;
+    }
+    header{display:flex; gap:20px; align-items:center;}
+    .hero{
+      width:96px; height:96px; border-radius:12px; background:linear-gradient(135deg,#ffd54f,#ff7043); display:flex; align-items:center; justify-content:center; font-weight:700; color:#fff; font-size:18px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.06);
+    }
+    h1{margin:0; font-size:28px}
+    p.lead{margin:6px 0 0; color:var(--muted)}
+
+    section{margin-top:20px}
+    h2{font-size:18px; margin:0 0 12px; color:var(--accent)}
+
+    ul{margin:0 0 12px 20px}
+    ol{margin:0 0 12px 20px}
+
+    .meta{display:flex; gap:12px; color:var(--muted); font-size:14px}
+    .note{background:#fff7f7;border-left:4px solid #ffd7d7;padding:10px;border-radius:6px}
+
+    .footer{margin-top:24px; display:flex; justify-content:space-between; align-items:center; color:var(--muted); font-size:14px}
+
+    @media (max-width:540px){
+      body{padding:16px}
+      .hero{width:72px;height:72px;font-size:16px}
+      h1{font-size:22px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+    <header>
+      <div class="hero">BRG</div>
+      <div>
+        <h1>Brigadeiro Recipe</h1>
+        <p class="lead">A classic Brazilian chocolate truffle made with sweetened condensed milk, cocoa, and butter. Easy to prepare and perfect for celebrations.</p>
+        <div class="meta" aria-hidden>
+          <div>Prep: <strong>10 min</strong></div>
+          <div>Cook: <strong>10–12 min</strong></div>
+          <div>Yields: <strong>16–20 pieces</strong></div>
+        </div>
+      </div>
+    </header>
+
+    <section aria-labelledby="ingredients">
+      <h2 id="ingredients">Ingredients</h2>
+      <ul>
+        <li>1 can (395 g / 14 oz) sweetened condensed milk</li>
+        <li>2 tablespoons unsweetened cocoa powder (sifted)</li>
+        <li>1 tablespoon unsalted butter (plus extra for rolling)</li>
+        <li>Chocolate sprinkles or grated chocolate (for coating)</li>
+        <li>Paper candy cups (optional)</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="instructions">
+      <h2 id="instructions">Instructions</h2>
+      <ol>
+        <li>In a medium, heavy-bottomed saucepan, combine the sweetened condensed milk, sifted cocoa powder, and butter.
+        </li>
+        <li>Cook over medium-low heat, stirring constantly with a wooden spoon or heatproof spatula. Scrape the bottom and sides to prevent burning.</li>
+        <li>After about 8–12 minutes, the mixture will thicken and start to pull away from the bottom of the pan — it should be glossy and dense. This is the right consistency for rolling.
+        </li>
+        <li>Remove the pan from heat and let the brigadeiro mixture cool to room temperature. For easier handling, refrigerate it for 30–60 minutes until firm enough to roll.</li>
+        <li>Lightly butter your hands. Scoop small portions (about 1 teaspoon) and roll into smooth balls.</li>
+        <li>Roll each ball in chocolate sprinkles, then place in paper candy cups. Keep refrigerated until serving.</li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="tips">
+      <h2 id="tips">Tips & Variations</h2>
+      <ul>
+        <li>For fudgier brigadeiros, cook slightly longer until mixture becomes thicker and darker.</li>
+        <li>Flavor variations: add a teaspoon of instant coffee, a splash of rum, or a pinch of sea salt to enhance the chocolate flavor.</li>
+        <li>Use cocoa powder for a richer chocolate flavor; for milder taste, substitute with chocolate powder.</li>
+        <li>To make larger bonbons, shape into larger spheres and chill longer before coating.</li>
+      </ul>
+    </section>
+
+    <section class="note" aria-labelledby="storage">
+      <h2 id="storage">Storage</h2>
+      <p>Store brigadeiros in an airtight container in the refrigerator for up to 5 days. For best texture, bring to room temperature for 10–15 minutes before serving.</p>
+    </section>
+
+    <div class="footer">
+      <div>Enjoy your homemade brigadeiros!</div>
+      <div>— Traditional Brazilian Treat</div>
+    </div>
+  </div>
+</body>
+</html>
