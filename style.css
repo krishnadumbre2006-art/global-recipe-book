@@ -3,6 +3,8 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  /* Reserve space so fixed pagination/footer don't overlap content */
+  padding-bottom: 120px;
   background: #fafafa;
   color: #333;
   line-height: 1.6;
@@ -63,6 +65,48 @@ header h1 {
   text-decoration: underline;
 }
 
+/* Pagination */
+.pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0 20px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 56px; /* sits above the footer */
+  background: #fff;
+  padding: 8px 12px;
+  z-index: 100;
+  border-top: 1px solid #eee;
+}
+
+.pagination button {
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #333;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination button[aria-current="page"] {
+  background: #4caf50;
+  color: #fff;
+  border-color: #4caf50;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-empty {
+  margin-left: 10px;
+  color: #777;
+}
+
 /* Footer */
 footer {
   text-align: center;
@@ -70,6 +114,12 @@ footer {
   background: #eee;
   margin-top: 30px;
   font-size: 0.9rem;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 90;
+  border-top: 1px solid #ddd;
 }
 
 /* Accessibility utilities */
