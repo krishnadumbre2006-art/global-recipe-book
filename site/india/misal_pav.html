@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Misal Pav — Recipe</title>
+  <style>
+    :root{
+      --bg:#fff8f5;
+      --card:#ffffff;
+      --accent:#d14900;
+      --accent-2:#f59e0b;
+      --muted:#6b7280;
+      --radius:14px;
+      --container:1100px;
+      --glass: rgba(255,255,255,0.6);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,var(--bg),#fff3ec 60%);
+      color:#111827;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:36px 20px;
+    }
+    .wrap{
+      max-width:var(--container);
+      margin:0 auto;
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:0 10px 30px rgba(16,24,40,0.08);
+      overflow:hidden;
+      border:1px solid rgba(15,23,42,0.03);
+    }
+    header{
+      padding:26px 30px;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      background:linear-gradient(90deg, rgba(209,73,0,0.08), rgba(245,158,11,0.03));
+      border-bottom:1px solid rgba(15,23,42,0.03);
+    }
+    .logo{
+      width:56px;height:56px;display:grid;place-items:center;border-radius:12px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      color:white;font-weight:700;font-size:20px;
+    }
+    header h1{font-size:20px;margin:0}
+    header p{margin:0;color:var(--muted);font-size:13px}
+
+    .top{
+      display:flex;gap:28px;padding:28px;align-items:flex-start;flex-wrap:wrap;
+    }
+    .left{flex:0 0 320px;min-width:260px;}
+    .card-image{
+      border-radius:12px;overflow:hidden;box-shadow:0 8px 20px rgba(2,6,23,0.06);
+      border:1px solid rgba(2,6,23,0.04);
+    }
+    .card-image img{display:block;width:100%;height:220px;object-fit:cover}
+
+    .right{flex:1;min-width:300px}
+    .meta{display:flex;gap:12px;align-items:center;margin-bottom:14px}
+    .badge{
+      background:var(--glass);padding:8px 10px;border-radius:10px;font-size:13px;
+      color:var(--accent);border:1px solid rgba(209,73,0,0.08)
+    }
+    h2.title{margin:0 0 8px 0;font-size:24px;color:var(--accent)}
+    .desc{color:var(--muted);line-height:1.6;margin-bottom:12px}
+
+    .info-grid{display:flex;gap:10px;flex-wrap:wrap}
+    .info-item{background:#fffaf7;border:1px solid rgba(209,73,0,0.08);
+      padding:12px;border-radius:10px;min-width:140px}
+    .info-item strong{display:block;color:#0f172a}
+    .tag{display:inline-block;background:rgba(209,73,0,0.08);
+      color:var(--accent);padding:6px 8px;border-radius:999px;
+      font-size:12px;margin-right:8px}
+
+    .bottom{padding:28px;border-top:1px solid rgba(15,23,42,0.03);
+      display:grid;grid-template-columns:1fr 1fr;gap:26px}
+    .box{background:linear-gradient(180deg,#fff,#fffaf8);
+      padding:18px;border-radius:12px;border:1px solid rgba(2,6,23,0.03)}
+    .section-title{font-weight:600;color:var(--accent);margin-bottom:10px}
+    .time{font-size:14px;color:var(--muted);}
+    ul.ingredients, ol.steps{padding-left:18px;margin:0}
+    ul.ingredients li, ol.steps li{margin-bottom:8px;line-height:1.5}
+    .notes{font-size:14px;color:var(--muted);line-height:1.5}
+
+    footer.card-footer{
+      padding:18px;border-top:1px solid rgba(15,23,42,0.03);
+      display:flex;justify-content:space-between;align-items:center
+    }
+    .btn{background:var(--accent);color:white;padding:10px 14px;
+      border-radius:10px;border:none;cursor:pointer;font-weight:600}
+    .muted-btn{background:transparent;border:1px solid rgba(2,6,23,0.06);
+      padding:10px 12px;border-radius:10px;color:var(--muted);cursor:pointer}
+
+    @media (max-width:900px){
+      .bottom{grid-template-columns:1fr}
+      .left,.right{flex:1 1 100%}
+      .card-image img{height:200px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">MP</div>
+      <div>
+        <h1>Misal Pav</h1>
+        <p>Spicy Maharashtrian street-food made with sprouted matki in fiery curry, topped with farsan & served with pav.</p>
+      </div>
+    </header>
+
+    <section class="top">
+      <div class="left">
+        <figure class="card-image">
+          <img src="../../assets/india/misal_pav.jpg" alt="Misal Pav">
+        </figure>
+      </div>
+
+      <div class="right">
+        <div class="meta">
+          <div class="badge">Maharashtra • Street Food</div>
+          <div class="badge">Spicy • Tangy</div>
+          <div class="badge">Serves 3–4</div>
+        </div>
+
+        <h2 class="title">A fiery, flavorful misal curry served with buttered pav</h2>
+        <p class="desc">Misal Pav is a beloved Maharashtrian breakfast and snack made from sprouted moth beans cooked in a spicy “kat” gravy, garnished with farsan, onions, coriander, and lemon. It’s hearty, spicy, and packed with textures.</p>
+
+        <div class="info-grid">
+          <div class="info-item"><strong>Prep</strong><span class="time">15 minutes</span></div>
+          <div class="info-item"><strong>Cook</strong><span class="time">30 minutes</span></div>
+          <div class="info-item"><strong>Difficulty</strong><span class="time">Easy – Medium</span></div>
+        </div>
+
+        <div class="tags" style="margin-top:14px">
+          <span class="tag">Vegan-Friendly</span>
+          <span class="tag">Street Food</span>
+          <span class="tag">Spicy Curry</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="bottom">
+      <div class="box">
+        <div class="section-title">Ingredients — For Misal</div>
+        <ul class="ingredients">
+          <li>1 cup sprouted moth beans (matki)</li>
+          <li>2 tbsp oil</li>
+          <li>1 tsp mustard seeds</li>
+          <li>1 tsp cumin seeds</li>
+          <li>1 onion, finely chopped</li>
+          <li>1 tomato, finely chopped</li>
+          <li>1½ tsp ginger-garlic paste</li>
+          <li>1 tsp turmeric powder</li>
+          <li>1½ tsp red chilli powder</li>
+          <li>2 tsp goda masala (or garam masala)</li>
+          <li>Salt to taste</li>
+          <li>2 cups water</li>
+        </ul>
+
+        <div style="height:10px"></div>
+
+        <div class="section-title">For Kat (Spicy Curry)</div>
+        <ul class="ingredients">
+          <li>2 tbsp oil</li>
+          <li>1 onion, sliced</li>
+          <li>2 tbsp grated coconut</li>
+          <li>1 tsp garam masala</li>
+          <li>½ tsp chilli powder</li>
+          <li>1½ cups water</li>
+        </ul>
+
+        <div style="height:10px"></div>
+        <div class="section-title">For Serving</div>
+        <ul class="ingredients">
+          <li>Farsan or sev</li>
+          <li>Finely chopped onions</li>
+          <li>Fresh coriander leaves</li>
+          <li>Lemon wedges</li>
+          <li>Pav (bread rolls)</li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <div class="section-title">Method</div>
+        <ol class="steps">
+          <li><strong>Make Misal Masala:</strong> Dry-roast dried coconut, coriander seeds, red chillies, cloves, cinnamon, cardamoms, mace, star anise, peppercorns & stone flower. Add cumin, fennel, sesame & poppy seeds, then garlic. Cool and grind with dried ginger and chilli powder to a coarse masala.</li>
+          <li><strong>Sprout Matki:</strong> Soak moth beans 8 hours, wrap in moist cloth and keep warm to sprout (~5 hrs).</li>
+          <li><strong>Cook Usal (Sprouts Curry):</strong> Heat oil, add mustard & cumin seeds, curry leaves & hing. Add onions, then ginger-garlic-coconut mix & tomatoes. Add turmeric, chilli powder & misal masala. Add sprouts & water, boil, then add tamarind and optional jaggery. Simmer 7–8 min until sprouts soft and oil floats on top.</li>
+          <li><strong>Toast Pav:</strong> On griddle with butter or in oven (180 °C for 3–4 min) until golden.</li>
+          <li><strong>Assemble:</strong> Add usal to bowls, pour thin gravy (kat) on top, garnish with farsan, onion, coriander & lemon. Serve immediately with pav.</li>
+        </ol>
+
+        <div style="height:12px"></div>
+        <div class="section-title">Serving Suggestion</div>
+        <p class="notes">Serve hot with buttered pav and a side of lemon & onions. Enjoy the contrast of spicy kat, crunchy farsan and soft bread.</p>
+
+        <div style="height:12px"></div>
+        <div class="section-title">Nutrition (per serving)</div>
+        <ul class="ingredients">
+          <li>Calories ~ 380 kcal</li>
+          <li>Carbohydrates 55 g | Protein 14 g | Fat 12 g | Fiber 8 g</li>
+          <li>Sodium 850 mg | Iron 2.3 mg | Vitamin C 10 mg</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="card-footer">
+      <div style="font-size:13px;color:var(--muted)">© Maharashtrian Kitchen • Authentic Street Recipe</div>
+      <div>
+        <button class="muted-btn" onclick="window.print()">Print Recipe</button>
+        <button class="btn" style="margin-left:10px" onclick="downloadHTML()">Download HTML</button>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    function downloadHTML(){
+      const html = `<!doctype html>\n${document.documentElement.outerHTML}`;
+      const blob = new Blob([html], {type: 'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'Misal_Pav.html';
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
