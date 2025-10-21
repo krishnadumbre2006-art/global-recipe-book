@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhokla : Recipe</title>
+    <style>
+body {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    background-color: #fffbe5; /* soft dhokla yellow base */
+    background-image: url('food.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 40px 20px;
+    color: #3e2e15;
+}
+
+.recipe-page {
+    background-color: #ffffff;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.recipe-page h1 {
+    color: #f4c542;
+    font-size: 48px;
+    margin-bottom: 10px;
+    font-family: "Emilys Candy", cursive;
+}
+
+.recipe-img {
+    border-radius: 15px;
+    margin: 20px 0;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.recipe-img:hover {
+    transform: scale(1.03);
+}
+
+.recipe-prep {
+    background-color: #eaf6d5;
+    padding: 10px 25px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-bottom: 30px;
+    font-size: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+h2 {
+    color: #84a33c;
+    font-size: 28px;
+    margin-top: 30px;
+    border-bottom: 2px solid #f4c542;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.recipe-page ul,
+.recipe-page ol {
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #5c4422;
+}
+
+.ingredients {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.ingredients-box {
+    flex: 1;
+    min-width: 240px;
+    background-color: #fffdf4;
+    border: 1px solid #f0e4b6;
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.ingredients-box:hover {
+    transform: translateY(-4px);
+}
+
+.ingredients-box ul {
+    list-style-type: disc;
+    padding-left: 18px;
+    font-size: 16px;
+    color: #5c4422;
+}
+
+ol {
+    counter-reset: step-counter;
+    padding-left: 20px;
+}
+
+ol li::marker {
+    font-weight: bold;
+    color: #f4c542;
+}
+
+.back a {
+    display: inline-block;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: #d4a100;
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.back a:hover {
+    background-color: #a07800;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="recipe-page">
+    <h1>Dhokla</h1>
+
+    <p style="max-width: 800px; margin: 0 auto; color: #5e4c2b; font-size: 18px;">
+        Dhokla is a soft, fluffy, and savory steamed cake made from gram flour (besan), originating from the Indian state of Gujarat.
+        It's a light and healthy snack that’s perfect for breakfast, tea-time, or even as a side dish. Dhokla is not fried, which makes it a healthy choice.
+    </p>
+    <img src="\assets\india\dhokla.png" alt="Dhokla" class="recipe-img" width="250px" height="250px">
+
+    <div class="recipe-prep">
+        <p><strong>Prep Time:</strong> 10 min</p>
+        <p><strong>Resting Time:</strong> 10–15 min</p>
+        <p><strong>Cook Time:</strong> 15–20 min</p>
+        <p><strong>Serving:</strong> 2 people</p>
+    </div>
+    <p></p>
+    
+    <h2>Ingredients</h2>
+    <div class="ingredients">
+      <div class="ingredients-box">
+        <strong>For Batter:</strong>
+        <ul>
+          <li>1 cup Besan (gram flour)</li>
+          <li>1 tbsp Lemon Juice</li>
+          <li>1 tbsp Sugar</li>
+          <li>1/2 tsp Turmeric Powder</li>
+          <li>Salt to taste</li>
+          <li>3/4 cup Water (adjust for a thick pouring consistency)</li>
+          <li>1 tsp Eno Fruit Salt (or 1/2 tsp baking soda + 1/2 tsp citric acid)</li>
+          </ul>
+      </div>
+      <div class="ingredients-box">
+          <strong>For Tempering:</strong>
+        <ul>
+          <li>1 tbsp Oil</li>
+          <li>1 tsp Mustard Seeds</li>
+          <li>1–2 Green Chilies, slit or chopped</li>
+          <li>8–10 Curry Leaves</li>
+          <li>2 tbsp Water</li>
+          <li>1 tsp Sugar (optional, for sweet tempering)</li>
+        </ul>
+      </div>
+      <div class="ingredients-box">
+          <strong>For Garnishing (optional):</strong>
+        <ul>
+          <li>Chopped coriander</li>
+          <li>Grated coconut</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>Instructions</h2>
+    <ol>
+        <li><strong>Make Batter:</strong> Mix besan, turmeric, salt, lemon juice, sugar, and water into a smooth, lump-free batter. Rest for 10–15 minutes.</li><br>
+        <li><strong>Prepare to Steam:</strong> Grease a steel plate or thali. Boil water in a steamer or large pot with a trivet.</li><br>
+        <li><strong>Add Eno & Steam:</strong> Add Eno, mix gently. Pour into the greased plate and steam for 15–20 mins. Check with a toothpick.</li><br>
+        <li><strong>Make Tempering:</strong> Heat oil, add mustard seeds, chilies, curry leaves, sugar, and water. Let it sizzle for a few seconds.</li><br>
+        <li><strong>Finish & Serve:</strong> Pour tempering over warm dhokla. Let it soak for a few minutes. Cut into pieces, garnish, and serve with chutney.</li><br>
+    </ol>
+
+    <div class="back">
+        <a href="/index.html">← Back to Home</a>
+    </div>
+
+    <footer>
+      © 2025 Steamed to Perfection | Love in Every Bite ❤️
+    </footer>
+</div>
+
+
+
+</body>
+</html>
