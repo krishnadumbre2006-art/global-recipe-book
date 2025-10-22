@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hara Bhara Kebab Recipe</title>
+
+  <style>
+    
+    /* --------- GLOBAL --------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { font-size: 16px; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #e9f7ed;
+      color: #3b2f2f;
+      line-height: 1.6;
+      font-size: 1.125rem;
+    }
+
+    h1, h2, h3 { margin: 0; }
+
+    section {
+      margin: 20px auto;
+      width: calc(100% - 40px);
+      max-width: 1400px;
+      padding: 0 10px;
+    }
+
+    /* --------- HEADER --------- */
+    header {
+     
+      background-color:#00563B ;
+      color: #fefae0;
+      text-align: center;
+      padding: 45px 20px;
+      background-size: cover;
+      background-repeat: repeat;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    header h1 {
+      font-size: clamp(28px, 4.5vw, 55px);
+      letter-spacing: 2px;
+      color: #ffe7b3;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+    }
+
+    header p {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(18px, 2.8vw, 45px);
+      color: #fff7d1;
+    }
+
+    /* --------- ABOUT SECTION (IMAGE + TEXT + TAGS + QUICK INFO) --------- */
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(260px, 44%) minmax(320px, 1fr);
+      gap: 30px;
+      align-items: start;
+    }
+
+    .intro img {
+      width: 100%;
+      max-width: 560px;
+      height: auto;
+      max-height: 60vh;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+    }
+
+    .intro-content h2 {
+      color: #5a3825;
+      margin-bottom: 10px;
+      font-size: clamp(28px, 4.6vw, 55px);
+    }
+
+    .intro-content p {
+      margin-bottom: 20px;
+      font-size: clamp(18px, 2.8vw, 30px);
+      color: #3b2f2f;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .tag {
+      background-color: #ffffff;
+      color: #4b2e05;
+      border-radius: 30px;
+      padding: 6px 15px;
+      border: 1.5px solid #1B3B2F;
+      font-size: 1.1rem;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+    .tag:hover {
+      transform: scale(1.03);
+      border-color: #0F3C35;
+      box-shadow: 0 8px 20px #1e7753;
+    }
+
+    .quick-info {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      padding-top: 25px;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border: 2px solid #1B3B2F;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      padding: 15px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+      border-color: #0F3C35;
+      box-shadow: 0 8px 20px #1e7753;
+    }
+
+    .card h3 {
+      color: #5a3825;
+      font-size: clamp(18px, 2.2vw, 25px);
+      margin-bottom: 8px;
+    }
+
+    /* --------- INGREDIENTS + SPECIAL BLEND --------- */
+    .ingredients-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      padding-top: 25px;
+    }
+
+    .ingredients, .blend {
+      background-color: #ffffff;
+      border: 2px solid #1B3B2F;
+      border-radius: 15px;
+      padding: 20px;
+      font-size: clamp(18px, 1.6vw, 25px);
+      color: black;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .ingredients:hover,
+    .blend:hover {
+      transform: scale(1.05);
+      border-color: #0F3C35;
+      box-shadow: 0 8px 20px #1e7753;
+    }
+
+    .ingredients h3, .blend h3 {
+      color: #5a3825;
+      border-bottom: 2px solid #b08b4f;
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+      font-size: clamp(20px, 2.8vw, 30px);
+    }
+
+    .ingredients ul { list-style: none; padding: 0; }
+    .ingredients li {
+      margin-bottom: 8px;
+      font-size: clamp(16px, 1.4vw, 20px);
+    }
+
+    /* --------- PREPARATION --------- */
+    .preparation {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding-top: 25px;
+    }
+
+    .preparation details {
+      background-color: #ffffff;
+      border-left: 5px solid #0F3C35;
+      border-radius: 12px;
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .preparation details:hover {
+      transform: scale(1.02) translateY(-3px);
+      box-shadow: 0 8px 20px #1e7753;
+    }
+
+    .preparation summary {
+      font-weight: 700;
+      font-size: clamp(18px, 2.2vw, 30px);
+      color: #7f340c;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .preparation summary::-webkit-details-marker { display: none; }
+    .preparation summary::marker { content: ""; }
+
+    .preparation p {
+      margin-top: 10px;
+      font-size: clamp(16px, 1.6vw, 25px);
+      line-height: 1.6;
+      color: #3b2f2f;
+    }
+
+    /* --------- CHEF TIP + QUICK INFO --------- */
+    .tips-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      padding-top: 25px;
+      padding-bottom: 25px;
+    }
+
+    .tip, .quick {
+      background-color: #ffffff;
+      border: 2px solid #1B3B2F;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      font-size: clamp(18px, 1.6vw, 25px);
+      transition: all 0.4s ease-in-out;
+    }
+
+    .tip h3, .quick h3 {
+      color: #5a3825;
+      margin-bottom: 8px;
+      font-size: clamp(20px, 2.2vw, 30px);
+    }
+    .tip:hover, .quick:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 12px 25px #1e7753;
+      border-color: #0F3C35;
+    }
+
+    /* --------- GARNISH --------- */
+    .garnish {
+      background-color: #ffffff;
+      border-left: 6px solid #0F3C35;
+      padding: 25px 20px;
+      border-radius: 10px;
+      font-style: italic;
+      color: #3b2f2f;
+      font-size: clamp(18px, 1.6vw, 30px);
+      font-weight: 700;
+      transition: all 0.4s ease-in-out;
+    }
+    .garnish:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(166, 123, 79, 0.25);
+      border-color: #0F3C35;
+      background-color: #7df874;
+    }
+
+    /* --------- NUTRITION --------- */
+    .nutrition-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .nutrition-table th,
+    .nutrition-table td {
+      padding: 12px 15px;
+      text-align: left;
+      font-size: clamp(14px, 1.4vw, 25px);
+      border-bottom: 1px solid #d1b68d;
+      color: #5a3825;
+    }
+
+    .nutrition-table th {
+      background-color: #1d5b02;
+      color: #fff;
+    }
+
+    .nutrition-table tr:hover {
+      background-color: #7df874;
+    }
+
+    .nutrition:hover{
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(166, 123, 79, 0.25);
+      border-color: #0F3C35;
+      background-color: #61fb56;
+    }
+
+    /* --------- FOOTER --------- */
+    footer {
+      background-color:#00563B ;
+      color: #fff7d1;
+      text-align: center;
+      padding: 25px 15px;
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(20px, 2.6vw, 55px);
+      background-size: cover;
+      box-shadow: 0 -5px 15px #1e7753;;
+    }
+
+    /* --------- RESPONSIVE DESIGN --------- */
+    @media (max-width: 900px) {
+      .intro, .ingredients-section, .tips-section {
+        grid-template-columns: 1fr;
+      }
+      .preparation summary { font-size: 18px; }
+      .preparation p { font-size: 16px; }
+      .quick-info { grid-template-columns: 1fr; }
+      section { margin: 20px auto; }
+      header h1 { font-size: 36px; }
+      header p { font-size: 18px; }
+    }
+
+    @media (max-width: 600px) {
+      .intro {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .card, .ingredients, .blend, .tip, .quick, .nutrition, .step, .garnish {
+        padding: 15px;
+        font-size: 16px;
+      }
+
+      .preparation summary { font-size: 16px; }
+      .preparation p { font-size: 15px; }
+      .intro-content h2 { font-size: 28px; }
+      .intro img {
+        max-height: 320px;
+        width: 100%;
+        max-width: 100%;
+        border-radius: 8px;
+      }
+
+      .tag {
+        font-size: 12px;
+        padding: 6px 10px;
+      }
+
+      .nutrition-table th, .nutrition-table td {
+        font-size: 14px;
+        padding: 8px 10px;
+      }
+
+      footer {
+        font-size: 22px;
+        padding: 20px 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <h1>Welcome to the Kitchen</h1>
+    <p>"Where flavors meet the warmth of tradition"</p>
+  </header>
+
+  <!-- ABOUT -->
+  <section class="intro">
+    <img src="hara_bhara_kabab.jpg" alt="Hara Bhara Kabab Image">
+    <div class="intro-content">
+      <h2>HARA BHARA KABAB</h2>
+      <p>Hara Bhara Kebab is a wholesome and delicious Indian snack made with spinach, peas, and potatoes. It’s crisp on the outside, soft inside, and bursting with earthy flavors — perfect for cozy evenings or family gatherings.</p>
+
+      <!-- TAGS -->
+      <div class="tags">
+        <div class="tag">Starter</div>
+        <div class="tag">Spicy</div>
+        <div class="tag">Healthy</div>
+        <div class="tag">Vegan Friendly</div>
+      </div>
+
+      <!-- QUICK INFO -->
+      <div class="quick-info">
+        <div class="card">
+          <h3>Prep Time</h3>
+          <p>20 mins</p>
+        </div>
+        <div class="card">
+          <h3>Cook Time</h3>
+          <p>25 mins</p>
+        </div>
+        <div class="card">
+          <h3>Difficulty</h3>
+          <p>Easy</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INGREDIENTS + SPECIAL BLEND -->
+  <section class="ingredients-section">
+    <div class="ingredients">
+      <h3>Ingredients</h3>
+      <ul>
+        <li><input type="checkbox"> Spinach – 1 cup (blanched)</li>
+        <li><input type="checkbox"> Green peas – ½ cup (boiled)</li>
+        <li><input type="checkbox"> Boiled potatoes – 2 medium</li>
+        <li><input type="checkbox"> Green chili – 1 finely chopped</li>
+        <li><input type="checkbox"> Bread crumbs – as needed</li>
+      </ul>
+    </div>
+
+    <div class="blend">
+      <h3>Special Blend</h3>
+      <p>Combine coriander powder, garam masala, and roasted cumin powder. This aromatic mix enhances the kebab’s deep green flavor and adds that irresistible rustic touch.</p>
+    </div>
+  </section>
+
+  <!-- PREPARATION -->
+  <section>
+    <h2 style="font-size:30px;padding-top:25px;">Preparation</h2>
+    <div class="preparation">
+      <details>
+        <summary>Step 1: Blend the greens</summary>
+        <p>
+          Wash and blanch the spinach to remove bitterness. Boil the green peas until tender. 
+          Combine spinach, peas, and finely chopped green chili in a blender. Blend into a 
+          coarse paste — this will form the fresh, earthy base of the kebabs.
+        </p>
+      </details>
+
+      <details>
+        <summary>Step 2: Mix with potatoes and spices</summary>
+        <p>
+          Boil and mash the potatoes until smooth. Add them to the spinach-pea paste. 
+          Incorporate coriander powder, garam masala, roasted cumin powder, and salt. 
+          Knead until you get a uniform, pliable mixture that holds together well.
+        </p>
+      </details>
+
+      <details>
+        <summary>Step 3: Shape the kebabs</summary>
+        <p>
+          Take small portions of the mixture and shape them into round or oval patties. 
+          Coat each patty evenly with bread crumbs; this ensures they become crisp when fried.
+        </p>
+      </details>
+
+      <details>
+        <summary>Step 4: Cook until golden</summary>
+        <p>
+          Heat oil in a shallow pan. Fry the kebabs on medium heat until each side is 
+          golden brown and crisp. Drain excess oil on paper towels. Serve hot with chutney.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CHEF TIP + QUICK INFO -->
+  <section class="tips-section">
+    <div class="tip">
+      <h3 style="font-size:30px;">💡Chef’s Tip</h3>
+      <hr>
+      <p>Refrigerate the kebabs for 10 minutes before frying. This helps them hold their shape and turn extra crispy.</p>
+    </div>
+    <div class="quick">
+      <h3 style="font-size:30px;">⏰Quick Info</h3>
+      <hr>
+      <p>Serve hot with mint chutney or tamarind sauce. Perfect for house parties, picnics, or cozy tea-time moments.</p>
+    </div>
+  </section>
+
+  <!-- GARNISH -->
+  <section class="garnish">
+    <p>🌿 Garnish with onion rings, lemon wedges, and a sprinkle of chaat masala for an authentic touch.</p>
+  </section>
+
+  <!-- NUTRITION -->
+  <section class="nutrition">
+    <h3 style="font-size:30px;padding-top:25px;">Nutritional Value (per serving)</h3>
+    <table class="nutrition-table">
+      <thead>
+        <tr>
+          <th>Nutrient</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Calories</td>
+          <td>120 kcal</td>
+        </tr>
+        <tr>
+          <td>Protein</td>
+          <td>6 g</td>
+        </tr>
+        <tr>
+          <td>Carbohydrates</td>
+          <td>15 g</td>
+        </tr>
+        <tr>
+          <td>Fat</td>
+          <td>4 g</td>
+        </tr>
+        <tr>
+          <td>Fiber</td>
+          <td>3 g</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    “Cooking is love made visible.” ❤
+  </footer>
+</body>
+</html>
