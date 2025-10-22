@@ -5,132 +5,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dhokla : Recipe</title>
     <style>
-body {
-    margin: 0;
-    font-family: 'Raleway', sans-serif;
-    background-color: #fffbe5; /* soft dhokla yellow base */
-    background-image: url('food.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    padding: 40px 20px;
-    color: #3e2e15;
-}
+        body {
+            margin: 0;
+            font-family: 'Raleway', sans-serif;
+            background-color: #fffbe5; /* soft dhokla yellow base */
+            background-image: url('food.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 40px 20px;
+            color: #3e2e15;
+        }
 
-.recipe-page {
-    background-color: #ffffff;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
+        .recipe-page {
+            background-color: #ffffff;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
 
-.recipe-page h1 {
-    color: #f4c542;
-    font-size: 48px;
-    margin-bottom: 10px;
-    font-family: "Emilys Candy", cursive;
-}
+        .recipe-page h1 {
+            color: #f4c542;
+            font-size: 48px;
+            margin-bottom: 10px;
+            font-family: "Emilys Candy", cursive;
+        }
 
-.recipe-img {
-    border-radius: 15px;
-    margin: 20px 0;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease;
-}
+        .recipe-img {
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
 
-.recipe-img:hover {
-    transform: scale(1.03);
-}
+        .recipe-img:hover {
+            transform: scale(1.03);
+        }
 
-.recipe-prep {
-    background-color: #eaf6d5;
-    padding: 10px 25px;
-    border-radius: 10px;
-    display: inline-block;
-    margin-bottom: 30px;
-    font-size: 16px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
+        .recipe-prep {
+            background-color: #eaf6d5;
+            padding: 10px 25px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-bottom: 30px;
+            font-size: 16px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
 
-h2 {
-    color: #84a33c;
-    font-size: 28px;
-    margin-top: 30px;
-    border-bottom: 2px solid #f4c542;
-    display: inline-block;
-    padding-bottom: 5px;
-}
+        h2 {
+            color: #84a33c;
+            font-size: 28px;
+            margin-top: 30px;
+            border-bottom: 2px solid #f4c542;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
 
-.recipe-page ul,
-.recipe-page ol {
-    text-align: left;
-    max-width: 800px;
-    margin: 0 auto 20px auto;
-    font-size: 18px;
-    line-height: 1.6;
-    color: #5c4422;
-}
+        .recipe-page ul,
+        .recipe-page ol {
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #5c4422;
+        }
 
-.ingredients {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 30px;
-}
+        .ingredients {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
 
-.ingredients-box {
-    flex: 1;
-    min-width: 240px;
-    background-color: #fffdf4;
-    border: 1px solid #f0e4b6;
-    border-radius: 12px;
-    padding: 16px 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease;
-}
+        .ingredients-box {
+            flex: 1;
+            min-width: 240px;
+            background-color: #fffdf4;
+            border: 1px solid #f0e4b6;
+            border-radius: 12px;
+            padding: 16px 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
 
-.ingredients-box:hover {
-    transform: translateY(-4px);
-}
+        .ingredients-box:hover {
+            transform: translateY(-4px);
+        }
 
-.ingredients-box ul {
-    list-style-type: disc;
-    padding-left: 18px;
-    font-size: 16px;
-    color: #5c4422;
-}
+        .ingredients-box ul {
+            list-style-type: disc;
+            padding-left: 18px;
+            font-size: 16px;
+            color: #5c4422;
+        }
 
-ol {
-    counter-reset: step-counter;
-    padding-left: 20px;
-}
+        ol {
+            counter-reset: step-counter;
+            padding-left: 20px;
+        }
 
-ol li::marker {
-    font-weight: bold;
-    color: #f4c542;
-}
+        ol li::marker {
+            font-weight: bold;
+            color: #f4c542;
+        }
 
-.back a {
-    display: inline-block;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    background-color: #d4a100;
-    color: white;
-    text-decoration: none;
-    padding: 12px 24px;
-    border-radius: 10px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
+        .back a {
+            display: inline-block;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            background-color: #d4a100;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
 
-.back a:hover {
-    background-color: #a07800;
-}
+        .back a:hover {
+            background-color: #a07800;
+        }
 
     </style>
 </head>
