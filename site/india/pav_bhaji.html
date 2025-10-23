@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pav-Bhaji Recipe</title>
+    <style>
+        *{
+            /* css reset */
+            margin: 0;
+            padding: 0; 
+            box-sizing: border-box;
+           
+
+        }
+        body{
+            background-color: beige;
+        }
+        .myrecipie{
+            border: 2px solid black;
+            width:70vw;
+            height: 100%;
+            position: relative;
+            top: 50px;
+            left: 15%;
+            box-shadow: 0px 16px 16px rgba(176, 182, 96, 0.546);
+            background-color: white;
+            border-radius: 13px;
+            flex: 1;
+        }
+        footer {
+  margin-top: auto; 
+  margin-top: 150px;  
+  text-align: center;
+  padding: 12px 0;
+  border-top: 1px solid #ccc;
+  background: #f7f3e6;
+}
+        header{
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../assets/india/pavbhaji.jpg");
+            background-size: cover;
+            background-position: center;
+            height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            
+        }
+        
+        header h1{
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        }
+        .ingredients{
+            position: relative;
+            top:20px;
+            display: flex;
+            gap:70px;
+        }
+        div.list{
+            position: relative;
+            
+            left:50px;
+           
+        }
+        .li{
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 10px;
+            width: 300px;
+            background-color: beige;
+            position: relative;
+            top: 20px;
+        }
+        .list li{
+            list-style: ">";
+            
+        }
+        .mainlist li{
+            list-style: "- ";
+        }
+        .sublist{
+            position: relative;
+            left:50px;
+        }
+        .other{
+            margin: auto;
+            margin-bottom: 350px;
+            margin-left: 150px;
+            position: relative;
+            top: 100px;
+        }
+        .img img{
+            border-radius: 10px;
+            border: 2px solid black;
+            
+        }
+        .img{
+            margin-right: 50px;
+        }
+        .info{
+            margin-right: 50px;
+            margin-top: 20px;
+            border: 2px solid black;
+            border-radius: 10px;
+            padding:5px;
+            background-color: beige;
+        }
+        .Steps{
+            position: relative;
+            top: 0px;
+            left: 50px;
+            margin-bottom: 100px;
+            margin-left: 75px;
+        }
+        .steps-container{
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 20px;
+            width: 600px;
+            background-color: beige;
+            position: relative;
+            top: 20px;
+        }
+        .steps-container ol{
+            padding-left: 20px;
+        }
+        .steps-container li{
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .tip{
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            background-color: rgb(199, 199, 185); 
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid black;
+        }
+       
+
+    </style>
+</head>
+<body>
+    <div class="myrecipie">
+    <header>
+        
+        <h1>Pav Bhaji</h1>
+    </header>
+    <main>
+        <div class="ingredients">
+            
+            <div class="list">
+                <h1>Ingredients:</h1>
+                <div class="li">
+                 <ul>
+                    <li class="mainlist">Vegetables
+                        <ul class="sublist">
+                            <li>Potatoes</li>
+                            <li>Cauliflower</li>
+                            <li>Carrots</li>
+                            <li>Peas</li>
+                            <li>Bell Peppers</li>
+                        </ul>
+                    </li>
+                    <li class="mainlist">Aromatics
+                        <ul class="sublist">
+                            <li>Ginger-Garlic paste</li>
+                            <li>Onions</li>
+                            <li>Tomatoes</li>
+                            <li>Green Chillies</li>
+                        </ul>
+                    </li>
+                    <li class="mainlist">Spices
+                        <ul class="sublist">
+                            <li>Pav-Bhaji Masala</li>
+                            <li>Turmeric Powder</li>
+                            <li>Red Chilli Powder</li>
+                            <li>Salt</li>
+                        </ul>
+                    </li>
+                    <li class="mainlist">Other:
+                        <ul class="sublist">
+                            <li>Oil</li>
+                            <li>Butter</li>
+                            <li>Water</li>
+                            <li>Pav</li>
+                            <li>Lime Wedges</li>
+                            <li>Coriander</li>
+                        </ul>
+                    </li>
+
+                 </ul>
+                 </div>
+            </div>
+            <div class="other">
+                <div class="img">
+                     <img src="../../assets/india/Pavbhaji2.jpg" alt="pavbhaji" srcset="" width="300px">
+                </div>
+                <div class="info">
+                    <p>Pav bhaji is a popular Indian street food from Mumbai consisting of a spiced vegetable mash (bhaji) served with soft buttered bread rolls (pav), typically garnished with butter, onions, and lemon.</p>
+                </div>
+            </div>
+        </div>
+        <div class="Steps">
+             <h1>Steps:</h1>
+             <div class="steps-container">
+                 <ol>
+                     <li><strong>Prepare the Vegetables:</strong> Boil potatoes, cauliflower, carrots, and peas in water until soft and mashable. Drain and set aside.</li>
+                     <li><strong>Heat Oil and Butter:</strong> In a large pan, heat oil and butter on medium heat.</li>
+                     <li><strong>Sauté Aromatics:</strong> Add finely chopped onions and green chillies. Sauté until onions turn golden brown.</li>
+                     <li><strong>Add Ginger-Garlic:</strong> Add ginger-garlic paste and cook for 1-2 minutes until the raw smell disappears.</li>
+                     <li><strong>Cook Tomatoes:</strong> Add finely chopped tomatoes and cook until they become soft and mushy.</li>
+                     <li><strong>Add Spices:</strong> Add turmeric powder, red chilli powder, pav bhaji masala, and salt. Mix well and cook for 2 minutes.</li>
+                     <li><strong>Add Bell Peppers:</strong> Add finely chopped bell peppers and sauté for 2-3 minutes.</li>
+                     <li><strong>Mash Vegetables:</strong> Add the boiled vegetables to the pan and mash them thoroughly using a potato masher.</li>
+                     <li><strong>Add Water:</strong> Add water to adjust consistency. The bhaji should be thick but not too dry. Simmer for 5-7 minutes.</li>
+                     <li><strong>Toast Pav:</strong> On a separate griddle, apply butter on pav and toast them until golden brown on both sides.</li>
+                     <li><strong>Final Touch:</strong> Add a generous dollop of butter on top of the bhaji and garnish with chopped coriander.</li>
+                     <li><strong>Serve:</strong> Serve hot bhaji with toasted pav, chopped onions, and lime wedges on the side.</li>
+                 </ol>
+                 <div class="tip"><p>Pro-tip: Use generous amount of butter to make it creamy and delicious. </p></div>
+             </div>
+        </div>
+    </main>
+    
+    </div>
+    
+    <footer><p>&copy; Pav-Bhaji Recipe India</p></footer>
+   
+</body>
+</html>
