@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chicken Kottu Recipe</title>
+  <style>
+    :root{
+      --bg:#f8f8f8;
+      --card:#ffffff;
+      --accent:#1a1a1a;
+      --accent-2:#333333;
+      --muted:#666666;
+      --radius:14px;
+      --container:1100px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,'Helvetica Neue',Arial;background:linear-gradient(180deg,var(--bg),#e8e8e8 60%);color:#0f172a;padding:36px 20px}
+    .wrap{max-width:var(--container);margin:0 auto;background:var(--card);border-radius:var(--radius);box-shadow:0 10px 30px rgba(2,6,23,0.08);overflow:hidden;border:1px solid rgba(2,6,23,0.04)}
+    header{padding:22px 26px;display:flex;gap:16px;align-items:center;background:linear-gradient(90deg, rgba(26,26,26,0.04), rgba(51,51,51,0.02));border-bottom:1px solid rgba(2,6,23,0.03)}
+    .logo{width:56px;height:56px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;font-weight:700;font-size:18px}
+    header h1{margin:0;font-size:20px}
+    header p{margin:0;color:var(--muted);font-size:13px}
+    .top{display:flex;gap:24px;padding:24px;align-items:flex-start;flex-wrap:wrap}
+    .left{flex:0 0 340px;min-width:260px}
+    .card-image{border-radius:12px;overflow:hidden;box-shadow:0 8px 20px rgba(2,6,23,0.06);border:1px solid rgba(2,6,23,0.04)}
+    .card-image img{display:block;width:100%;height:240px;object-fit:cover}
+    .right{flex:1;min-width:300px}
+    .meta{display:flex;gap:10px;align-items:center;margin-bottom:12px}
+    .badge{background:#f5f5f5;padding:8px 12px;border-radius:20px;font-size:12px;color:var(--accent);border:1px solid rgba(26,26,26,0.08);font-weight:500;letter-spacing:0.3px}
+    h2.title{margin:6px 0 10px 0;font-size:22px;color:var(--accent)}
+    .desc{color:var(--muted);line-height:1.6;margin-bottom:12px}
+    .info-grid{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+    .info-item{background:#fafafa;border:1px solid rgba(26,26,26,0.06);padding:14px;border-radius:12px;min-width:140px;transition:all 0.2s ease}
+    .info-item:hover{background:#f5f5f5;border-color:rgba(26,26,26,0.1);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.04)}
+    .info-item strong{display:block;color:#0b1220}
+    .tags{margin-top:12px}
+    .tag{display:inline-block;background:var(--accent);color:white;padding:6px 12px;border-radius:999px;font-size:11px;margin-right:8px;border:1px solid var(--accent);font-weight:500;letter-spacing:0.5px;transition:all 0.2s ease}
+    .tag:hover{background:var(--accent-2);border-color:var(--accent-2);transform:translateY(-1px)}
+    .bottom{padding:26px;padding-top:0px;border-top:1px solid rgba(2,6,23,0.03);display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .box{background:linear-gradient(180deg,#fff,#f9f9f9);padding:18px;border-radius:12px;border:1px solid rgba(2,6,23,0.03)}
+    .section-title{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--accent);margin-bottom:14px;font-size:18px;letter-spacing:0.3px;padding-bottom:8px;border-bottom:2px solid rgba(26,26,26,0.06)}
+    .time{font-size:14px;color:var(--muted)}
+    ul.ingredients{padding-left:18px;margin:0}
+    ul.ingredients li{margin-bottom:8px}
+    ul.tips-list{padding-left:18px;margin:0;list-style:none}
+    ul.tips-list li{margin-bottom:8px;padding-left:24px;position:relative}
+    ul.tips-list li:before{content:'💡';position:absolute;left:0;top:0;font-size:14px;opacity:0.7}
+    ol.steps{padding-left:18px;margin:0}
+    ol.steps li{margin-bottom:10px}
+    .notes{font-size:14px;color:var(--muted);line-height:1.5}
+    footer.card-footer{padding:16px 18px;border-top:1px solid rgba(2,6,23,0.03);display:flex;justify-content:space-between;align-items:center}
+    .btn{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:600}
+    .muted-btn{background:transparent;border:1px solid rgba(2,6,23,0.06);padding:10px 12px;border-radius:10px;color:var(--muted);cursor:pointer}
+    @media (max-width:900px){.bottom{grid-template-columns:1fr}.left{flex:1 1 100%}.right{flex:1 1 100%}.card-image img{height:200px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">CK</div>
+      <div>
+        <h1>Chicken Kottu</h1>
+        <p>Sri Lanka's most loved and popular street food</p>
+      </div>
+    </header>
+
+
+    <section class="top">
+      <div class="left">
+        <figure class="card-image">
+          <img src="../../assets/srilanka/chicken_kottu.jpg" alt="Chicken Kottu">
+        </figure>
+      </div>
+
+
+      <div class="right">
+        <h2 class="title">Chicken Kottu</h2>
+        <p class="desc">A tasty mix of chopped godamba roti, chicken curry, vegetables, and egg, all cooked together. Quick, easy, and full of flavor - a Sri Lankan favorite enjoyed by everyone.</p>
+
+
+        <div class="info-grid">
+          <div class="info-item"><strong>Prep</strong><span class="time">20 minutes</span></div>
+          <div class="info-item"><strong>Cook</strong><span class="time">20 minutes</span></div>
+          <div class="info-item"><strong>Difficulty</strong><span class="time">Easy</span></div>
+        </div>
+
+
+        <div class="tags" style="margin-top:12px">
+          <span class="tag">Street Food</span>
+          <span class="tag">Spicy</span>
+          <span class="tag">Savory</span>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="bottom">
+      <div class="box">
+        <div class="section-title">Ingredients</div>
+        <ul class="ingredients">
+          <li>2 Godamba Roti pieces (or Parotta/Roti Canai)</li>
+          <li>1 cup Chicken Curry (gravy only)</li>
+          <li>4 pieces Chicken from curry or roast chicken</li>
+          <li>½ cup Carrot, cut into thin strips</li>
+          <li>½ cup Leek (green part), cut into thin slices</li>
+          <li>¼ cup Tomato, chopped (or 1 small tomato)</li>
+          <li>3-inch piece Leek (white/light green), cut into rings</li>
+          <li>2 Green Chilies, sliced (or chili flakes)</li>
+          <li>1 tsp Garlic, finely chopped</li>
+          <li>1 tsp Ginger, finely chopped</li>
+          <li>2 tbsp Onion, chopped</li>
+          <li>1 Egg</li>
+          <li>1 tbsp Oil</li>
+          <li>Salt, to taste</li>
+        </ul>
+
+
+        <div style="height:24px"></div>
+        <div class="section-title" style="border-bottom-style:dashed">Tips & Variations</div>
+        <ul class="tips-list">
+          <li>Use leftover chicken curry for authentic flavor and convenience.</li>
+          <li>Adjust the spice level by adding more or fewer green chilies.</li>
+          <li>For vegetarian version, substitute chicken with paneer or mixed vegetables.</li>
+          <li>Add cabbage or bell peppers for extra crunch and nutrition.</li>
+          <li>The key to great Kottu is the chopping technique - use two metal spatulas for authentic street-style preparation.</li>
+        </ul>
+      </div>
+
+
+
+      <div class="box">
+        <div class="section-title">Method</div>
+        <ol class="steps">
+          <li><strong>Heat the oil:</strong> Heat oil in a large pan or wok on medium-high heat. Add the chopped ginger, garlic, and the white part of the leek. Cook for about 30 seconds until it smells good.</li>
+          <li><strong>Add the chicken:</strong> Add the chicken pieces from your curry (or roast chicken). Break them into small pieces using your spatula. Cook for a minute or two until they start to turn slightly brown.</li>
+          <li><strong>Cook the egg:</strong> Push everything to one side of the pan. Crack the egg into the empty space and let it fry for a few seconds. Stir and break the egg into small pieces, then mix it with the chicken.</li>
+          <li><strong>Add onions and chilies:</strong> Move the mix to one side again and add the chopped onion and sliced chilies. You can also add some chili flakes for extra spice. Stir everything together well.</li>
+          <li><strong>Add vegetables:</strong> Move everything to the side again and add the carrot strips. Stir them for about 30 seconds to soften a little. Then add the chopped tomatoes and mix everything together.</li>
+          <li><strong>Season the mixture:</strong> Add salt to taste and mix well. You can also add a little pepper if you like. Taste and adjust the seasoning.</li>
+          <li><strong>Add roti and leeks:</strong> Add the chopped godamba roti pieces and the green part of the leeks. Mix everything well on high heat for about a minute.</li>
+          <li><strong>Add curry sauce:</strong> Pour in the chicken curry gravy. Add more if you want a soft, saucy Kottu or less if you like it dry. Mix until all the roti pieces are coated with the curry.</li>
+          <li><strong>Final mixing:</strong> Lower the heat and keep mixing and chopping the roti pieces using your spatula for 1–2 minutes. This helps blend all the flavors together.</li>
+          <li><strong>Serve:</strong> Serve hot straight from the pan with some extra curry or chili sauce on the side.</li>
+        </ol>
+      </div>
+    </section>
+
+    <footer class="card-footer">
+      <div style="font-size:13px;color:var(--muted)">© Sri Lankan Street Food • <a href="../../index.html" style="color:var(--accent);text-decoration:none">Back to Recipe Book</a></div>
+      <div>
+        <button class="muted-btn" onclick="window.print()">Print Recipe</button>
+        <button class="btn" style="margin-left:10px" onclick="downloadHTML()">Download HTML</button>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    function downloadHTML(){
+      const html = `<!doctype html>\n${document.documentElement.outerHTML}`;
+      const blob = new Blob([html], {type: 'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; 
+      a.download = 'Chicken_Kottu.html';
+      document.body.appendChild(a); 
+      a.click(); 
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
