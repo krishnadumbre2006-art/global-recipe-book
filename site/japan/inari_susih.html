@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inari Sushi Recipe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=1200') center/cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: drift 20s linear infinite;
+        }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            animation: slideInLeft 1s ease;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            animation: slideInRight 1s ease;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: -50px auto 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .description-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 0 2rem 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: fadeIn 1.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .description-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .info-badges {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: popIn 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .badge:nth-child(1) { animation-delay: 0.2s; }
+        .badge:nth-child(2) { animation-delay: 0.4s; }
+        .badge:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .badge:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 0 2rem 3rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: slideUp 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.3s; }
+        .card:nth-child(2) { animation-delay: 0.5s; }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        .ingredient-section h3 {
+            color: #764ba2;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .ingredient-list, .instruction-list {
+            list-style: none;
+        }
+
+        .ingredient-list li {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .ingredient-list li:hover {
+            background: #f8f9ff;
+            padding-left: 1rem;
+            border-left: 4px solid #667eea;
+        }
+
+        .ingredient-list li::before {
+            content: '🍚';
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .instructions-card {
+            grid-column: 1 / -1;
+            animation: slideUp 0.8s ease 0.7s forwards;
+            opacity: 0;
+        }
+
+        .instruction-list {
+            counter-reset: step;
+        }
+
+        .instruction-list li {
+            counter-increment: step;
+            padding: 1.5rem 1.5rem 1.5rem 5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%);
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: visible;
+        }
+
+        .instruction-list li::before {
+            content: counter(step);
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .instruction-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+        }
+
+        .instruction-list li:hover::before {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #764ba2;
+            margin: 2rem 0 1rem;
+        }
+
+        .tips-card {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            animation: slideUp 0.8s ease 0.9s forwards;
+            opacity: 0;
+        }
+
+        .tips-card h2 {
+            color: white;
+            border-bottom-color: white;
+        }
+
+        .tips-list {
+            list-style: none;
+        }
+
+        .tips-list li {
+            padding: 1rem;
+            margin-bottom: 0.8rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border-left: 4px solid white;
+            transition: all 0.3s ease;
+        }
+
+        .tips-list li:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(10px);
+        }
+
+        .tips-list li::before {
+            content: '💡';
+            margin-right: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 3rem;
+            color: white;
+            font-size: 1.2rem;
+            animation: fadeIn 2s ease;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .instructions-card, .tips-card {
+                grid-column: 1;
+            }
+
+            .instruction-list li {
+                padding-left: 4.5rem;
+            }
+
+            .instruction-list li::before {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                left: 0.5rem;
+            }
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1 class="floating">Inari Sushi</h1>
+            <p>稲荷寿司 • INARIZUSHI</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="description-card">
+            <p>A beloved Japanese comfort food consisting of seasoned sushi rice stuffed into sweet and savory aburaage (deep-fried tofu pouches). These golden pockets are named after Inari, the Shinto god of rice and prosperity, whose messenger is said to be the fox—an animal that loves fried tofu. With their perfect balance of sweet, savory, and tangy flavors, Inari Sushi makes an excellent vegetarian option for bento boxes, picnics, or as a light meal.</p>
+            
+            <div class="info-badges">
+                <div class="badge">⏱️ Prep: 20 min</div>
+                <div class="badge">🔥 Cook: 25 min</div>
+                <div class="badge">🍱 Cuisine: Japanese</div>
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <div class="card">
+                <h2>Ingredients</h2>
+                
+                <div class="ingredient-section">
+                    <h3>For the Sushi Rice:</h3>
+                    <ul class="ingredient-list">
+                        <li>2 cups Japanese Short-Grain Rice (uncooked)</li>
+                        <li>2½ cups Water</li>
+                        <li>3 tbsp Rice Vinegar</li>
+                        <li>2 tbsp Sugar</li>
+                        <li>1 tsp Salt</li>
+                    </ul>
+                </div>
+
+                <div class="ingredient-section">
+                    <h3>For the Aburaage (Tofu Pouches):</h3>
+                    <ul class="ingredient-list">
+                        <li>10 pieces Aburaage (deep-fried tofu pouches)</li>
+                        <li>1½ cups Dashi (Japanese soup stock)</li>
+                        <li>3 tbsp Soy Sauce</li>
+                        <li>3 tbsp Sugar</li>
+                        <li>2 tbsp Mirin</li>
+                        <li>1 tbsp Sake (optional)</li>
+                    </ul>
+                </div>
+
+                <div class="ingredient-section">
+                    <h3>Optional Toppings/Mix-ins:</h3>
+                    <ul class="ingredient-list">
+                        <li>2 tbsp Toasted Sesame Seeds</li>
+                        <li>1 tbsp Pickled Ginger, finely chopped</li>
+                        <li>2 tbsp Green Onions, finely chopped</li>
+                        <li>1 tbsp Furikake (Japanese rice seasoning)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Quick Overview</h2>
+                <div style="background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%); padding: 2rem; border-radius: 15px; text-align: center;">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">🍣</div>
+                    <h3 style="color: #667eea; margin-bottom: 1rem;">Traditional Japanese Delicacy</h3>
+                    <p style="line-height: 1.8;">Sweet, savory tofu pouches filled with perfectly seasoned sushi rice. A vegetarian favorite that's perfect for any occasion!</p>
+                </div>
+            </div>
+
+            <div class="card instructions-card">
+                <h2>Instructions</h2>
+                
+                <div class="section-title">Preparing the Sushi Rice:</div>
+                <ul class="instruction-list">
+                    <li>Rinse the Japanese short-grain rice under cold water 3-4 times until the water runs clear. This removes excess starch and prevents the rice from becoming too sticky.</li>
+                    <li>Add the rinsed rice and water to a rice cooker or pot. If using a pot, bring to a boil, then reduce heat to low, cover, and simmer for 15 minutes. Turn off heat and let it steam for 10 minutes without opening the lid.</li>
+                    <li>While the rice is cooking, prepare the sushi vinegar by mixing rice vinegar, sugar, and salt in a small bowl. Stir until the sugar and salt dissolve completely.</li>
+                    <li>Transfer the hot cooked rice to a large, shallow bowl. Pour the sushi vinegar mixture evenly over the rice.</li>
+                    <li>Using a rice paddle or wooden spoon, gently fold and cut through the rice (do not stir or mash) while fanning it to cool it down quickly. This creates glossy, flavorful sushi rice. Let it cool to room temperature.</li>
+                </ul>
+
+                <div class="section-title">Preparing the Aburaage Pouches:</div>
+                <ul class="instruction-list">
+                    <li>Place the aburaage pouches in a colander and pour boiling water over them. This removes excess oil and makes them easier to open. Gently press with paper towels to remove moisture.</li>
+                    <li>Carefully cut each aburaage pouch in half to create two rectangular pieces. Gently open each piece to form a pocket, being careful not to tear the edges.</li>
+                    <li>In a medium saucepan, combine dashi, soy sauce, sugar, mirin, and sake (if using). Bring to a boil over medium heat, stirring to dissolve the sugar.</li>
+                    <li>Add the aburaage pouches to the simmering liquid. Place a drop lid or a piece of parchment paper directly on top of the pouches to keep them submerged.</li>
+                    <li>Simmer for 12-15 minutes over low heat until the pouches absorb the sweet-savory flavors and the liquid reduces by about half. Remove from heat and let them cool in the liquid for better flavor absorption.</li>
+                    <li>Once cooled, gently squeeze each pouch to remove excess liquid. The pouches should be moist but not dripping.</li>
+                </ul>
+
+                <div class="section-title">Assembling the Inari Sushi:</div>
+                <ul class="instruction-list">
+                    <li>If desired, mix optional ingredients (sesame seeds, pickled ginger, green onions, or furikake) into the cooled sushi rice for extra flavor and texture.</li>
+                    <li>Wet your hands with water to prevent the rice from sticking. Take about 2-3 tablespoons of sushi rice and gently shape it into an oval ball.</li>
+                    <li>Hold one aburaage pouch open and carefully insert the rice ball. Gently press the rice down and shape it to fit the pouch evenly, filling it about 80-90% full.</li>
+                    <li>Fold the open edges of the pouch over the rice to create a neat package, or leave it open to show the rice on top (both styles are traditional).</li>
+                    <li>Repeat with the remaining pouches and rice. Arrange the Inari Sushi on a serving plate with the folded side down.</li>
+                    <li>Serve at room temperature or slightly chilled. Garnish with additional sesame seeds, pickled ginger, or a sprinkle of furikake if desired.</li>
+                </ul>
+            </div>
+
+            <div class="card tips-card">
+                <h2>Pro Tips</h2>
+                <ul class="tips-list">
+                    <li>Use authentic Japanese short-grain rice—medium or long-grain rice will not have the proper sticky texture</li>
+                    <li>Pre-made seasoned aburaage pouches (ajitsuke inari age) are available at Asian grocery stores and save significant preparation time</li>
+                    <li>Don't overfill the pouches—leave a little space at the top so they close easily and look neat</li>
+                    <li>Wet your hands frequently when handling sushi rice to prevent sticking</li>
+                    <li>Inari Sushi can be made ahead and stored in an airtight container in the refrigerator for up to 2 days</li>
+                    <li>For variety, try adding ingredients like edamame, corn, or finely diced vegetables to the sushi rice</li>
+                    <li>The leftover simmering liquid from the aburaage is delicious and can be used to flavor other dishes or noodles</li>
+                    <li>Let the rice cool to room temperature before stuffing—hot rice can make the pouches soggy</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>🍣 Enjoy your homemade Inari Sushi! 🍣</p>
+    </div>
+</body>
+</html>
