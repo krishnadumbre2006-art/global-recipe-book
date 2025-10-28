@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Poha Recipe</title>
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background-color: #fffefb;
+      color: #333;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      color: #3b3b3b;
+    }
+
+    .back-btn {
+      position: absolute;
+      left: 0;
+      background-color: #f8d775;
+      color: #000;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #ffd74f;
+    }
+
+  
+    .image-section {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .image-section img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    section {
+      margin-bottom: 25px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .image-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 25px;
+        padding: 8px;
+    }
+
+    
+    .image-section img {
+        width: 100%;
+        max-width: 800px;     
+        height: auto;
+        display: block;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        max-height: 60vh;    
+    }
+
+   
+    @supports (aspect-ratio: 16/9) {
+        .image-section img {
+            aspect-ratio: 16/9;
+        }
+    }
+
+   
+    @media (max-width: 600px) {
+        .image-section {
+            padding: 4px;
+        }
+        .image-section img {
+            max-width: 100%;
+            max-height: 45vh;
+            border-radius: 10px;
+        }
+    }
+
+    h2 {
+      color: #d49a00;
+      margin-bottom: 10px;
+    }
+
+    ul, ol {
+      padding-left: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 30px;
+    }
+
+    
+    
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="../../index.html" class="back-btn">← Go Back</a>
+    <h1>Poha Recipe</h1>
+  </header>
+
+  <section class="image-section">
+    <img src="../../assets/india/poha.jpg" alt="Delicious Poha" />
+  </section>
+
+  <section class="about">
+    <h2>About Poha</h2>
+    <p>
+      Poha is a light, healthy, and delicious Indian breakfast dish made from flattened rice.
+      It's quick to prepare and packed with flavor, often garnished with coriander, peanuts,
+      and lemon juice. Perfect for busy mornings!
+    </p>
+  </section>
+
+  <section class="ingredients">
+    <h2>Ingredients</h2>
+    <ul>
+      <li>1½ cups poha (flattened rice)</li>
+      <li>1 medium onion, finely chopped</li>
+      <li>1 green chili, chopped</li>
+      <li>1 medium potato, diced (optional)</li>
+      <li>¼ cup peanuts</li>
+      <li>½ tsp mustard seeds</li>
+      <li>8–10 curry leaves</li>
+      <li>¼ tsp turmeric powder</li>
+      <li>1 tbsp oil</li>
+      <li>Salt to taste</li>
+      <li>Fresh coriander and lemon juice for garnish</li>
+    </ul>
+  </section>
+
+  <section class="steps">
+    <h2>Steps to Make Poha</h2>
+    <ol>
+      <li>Rinse the poha in a strainer under running water. Let it sit for 5 minutes to soften.</li>
+      <li>Heat oil in a pan and add mustard seeds. Once they splutter, add curry leaves, peanuts, and green chili.</li>
+      <li>Add chopped onions and sauté until translucent. Optionally, add diced potatoes and cook until soft.</li>
+      <li>Stir in turmeric powder and salt. Mix well.</li>
+      <li>Add the softened poha and mix gently on low flame for 2–3 minutes.</li>
+      <li>Turn off the heat, garnish with coriander and a squeeze of lemon juice. Serve warm!</li>
+    </ol>
+  </section>
+
+  <section class="serving">
+    <h2>Serving Suggestion</h2>
+    <p>
+      Serve hot poha with a cup of chai or curd. You can also top it with sev or grated coconut for extra texture.
+    </p>
+  </section>
+
+  <section class="tips">
+    <h2>Pro Tips</h2>
+    <ul>
+      <li>Do not over-soak the poha; it should be soft but not mushy.</li>
+      <li>Add a pinch of sugar for a balanced flavor.</li>
+      <li>You can mix in veggies like peas or carrots for a healthier version.</li>
+      <li>Roast the peanuts separately for extra crunch.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>© 2025 Poha Lovers | Made with ❤️</p>
+  </footer>
+</body>
+</html>
