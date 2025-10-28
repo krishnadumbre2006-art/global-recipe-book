@@ -1,0 +1,232 @@
+<!doctype html>
+<!-- https://github.com/CSI-CATT/global-recipe-book -->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&family=Mukta&family=Poppins&display=swap" rel="stylesheet">
+  <title>Sabudana Vada — Recipe</title>
+  <style>
+    :root{
+      --bg:#3d3c39;
+      --card:#ffffff;
+      --accent:#556B2F;
+      --accent-2: #556B2F;
+      --muted:#111112;
+      --radius:14px;
+      --container:1100px;
+      --glass: rgba(255,255,255,0.6);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:'Baloo Bhai 2', cursive;
+      background-color: #FFF8E7;
+      color:#228B22;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:36px 20px;
+    }
+    .sub-heading{
+      font-size: 18px;
+    }
+    .wrap{
+      max-width:var(--container);
+      margin:0 auto;
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:0 10px 30px rgba(16,24,40,0.08);
+      overflow:hidden;
+      border:1px solid rgba(15,23,42,0.03);
+    }
+    header{
+      padding:26px 30px;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      /* background-image: url(/assets/india/Sabudana-Vada-bgimg.jpg); */
+      background:linear-gradient(90deg, #EFF5D2, rgba(111, 123, 5, 0.848));
+      border-bottom:1px solid rgba(15,23,42,0.03);
+    }
+    header h1{font-size:25px;margin:0}
+    header p{margin:0;color:var(--muted);font-size:16px}
+
+    .top{
+      display:flex;gap:28px;padding:28px;align-items:flex-start;flex-wrap:wrap;
+    }
+    .left{flex:0 0 320px;min-width:260px;}
+    .card-image{
+      border-radius:12px;overflow:hidden;box-shadow:0 8px 20px rgba(2,6,23,0.06);
+      border:1px solid rgba(2,6,23,0.04);
+    }
+    .card-image img{display:block;width:100%;height:220px;object-fit:cover}
+
+    .right{flex:1;min-width:300px}
+    .meta{display:flex;gap:12px;align-items:center;margin-bottom:14px}
+    .badge{
+      background:var(--glass);padding:10px 15px;border-radius:10px;font-weight:500;font-size:15px;
+      color:var(--accent);border:1px solid rgba(209,73,0,0.08)
+    }
+    h2.title{margin:0 0 8px 0;font-size:24px;color:var(--accent)}
+    .desc{color:var(--muted);line-height:1.6;margin-bottom:12px}
+
+    .info-grid{display:flex;gap:10px;flex-wrap:wrap}
+    .info-item{background:#fffaf7;border:1px solid rgba(209,73,0,0.08);
+      padding:12px;border-radius:10px;min-width:140px}
+    .info-item strong{display:block;color:#0f172a}
+    .tag{display:inline-block;background:rgba(209,73,0,0.08);
+      color:var(--accent);padding:10px 15px;border-radius:999px;
+      font-size:14px;margin-right:8px;font-weight:600;}
+
+    .bottom{padding:28px;border-top:1px solid rgba(15,23,42,0.03);
+      display:grid;grid-template-columns:1fr 1fr;gap:26px}
+    .box{background:linear-gradient(180deg,#fff,#fffaf8);
+      padding:18px;border-radius:12px;border:1px solid rgba(2,6,23,0.03)}
+    .section-title{font-weight:600;color:var(--accent);margin-bottom:10px}
+    .time{font-size:14px;color:var(--muted);}
+    ul.ingredients, ol.steps{padding-left:18px;margin:0}
+    ul.ingredients li, ol.steps li{margin-bottom:8px;line-height:1.5}
+    .notes{font-size:16px;color:#228B22;line-height:1.5}
+
+    footer.card-footer{
+      padding:18px;border-top:1px solid rgba(15,23,42,0.03);
+      display:flex;justify-content:space-between;align-items:center
+    }
+    .btn{background:var(--accent);color:white;padding:10px 14px;
+      border-radius:10px;border:none;cursor:pointer;font-weight:600}
+    .muted-btn{background:transparent;border:1px solid rgba(2,6,23,0.06);
+      padding:10px 12px;border-radius:10px;color:var(--muted);cursor:pointer}
+
+    @media (max-width:900px){
+      .bottom{grid-template-columns:1fr}
+      .left,.right{flex:1 1 100%}
+      .card-image img{height:220px}
+      .card-image img{width:18rem;}
+      .card-image img{margin-left: 164px;}
+      .card-image img{border-radius:20px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <!-- <div class="logo">SV</div> -->
+      <div>
+        <h1>Sabudana Vada</h1>
+        <p>Crispy golden sabudana fritters, perfectly spiced, served hot with tangy green chutney — a crunchy Maharashtrian delight!</p>
+      </div>
+    </header>
+
+    <section class="top">
+      <div class="left">
+        <figure class="card-image">
+          <img src="../../assets/india/Sabudana-Vada.jpg" alt="Sabudana-Vada">
+        </figure>
+      </div>
+
+      <div class="right">
+        <div class="meta">
+          <div class="badge">Vrat Special • Traditional Snack</div>
+          <div class="badge">Crunchy • Mildly Spiced</div>
+          <div class="badge">Serves 3–4 • Best enjoyed hot</div>
+        </div>
+
+        <h2 class="title">Crunchy sabudana vadas full of flavor, best enjoyed hot with spicy chutney!</h2>
+        <p class="desc">Sabudana vada is a traditional deep-fried Indian snack, originating from Maharashtra, that is crunchy on the outside and soft on the inside. Made from tapioca pearls (sabudana), mashed potatoes, and crushed peanuts, it is a popular dish during Hindu fasting periods, such as Navratri, as well as a general tea-time or street snack. </p>
+
+        <div class="info-grid">
+          <div class="info-item"><strong>Prep</strong><span class="time">30 minutes</span></div>
+          <div class="info-item"><strong>Cook</strong><span class="time">15 minutes</span></div>
+          <div class="info-item"><strong>Difficulty</strong><span class="time">Easy – Medium</span></div>
+        </div>
+
+        <div class="tags" style="margin-top:14px">
+          <span class="tag">Pure vegetarian</span>
+          <span class="tag">Street Snack</span>
+          <span class="tag">Upvas Treat - Festive Favorite</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="bottom">
+      <div class="box">
+        <div class="section-title sub-heading">🧆Ingredients — For Sabudana vada</div>
+        <ul class="ingredients">
+          <li>1 cup sabudana(tapioca pearls) (soaked for overnight)</li>
+          <li>2 medium potatoes, boiled and mashed</li>
+          <li>½ cup roasted peanuts, coarsely crushed</li>
+          <li>1 tsp cumin seeds</li>
+          <li>2–3 green chillies, finely chopped</li>
+          <li>1 tbsp lemon juice</li>
+          <li>2 tbsp coriander leaves, finely chopped</li>
+          <li>1 tsp turmeric powder</li>
+          <li>Rock salt (sendha namak) to taste</li>
+          <li>Oil for deep frying</li>
+          <li>water if needed for binding</li>
+        </ul>
+
+        <div style="height:10px"></div>
+
+        <div class="section-title sub-heading">🌿 Green Tangy Chutney for Sabudana Vada</div>
+        <ul class="ingredients">
+          <li>1 cup fresh coriander leaves (washed and roughly chopped)</li>
+          <li>½ cup fresh mint leaves (optional, for extra freshness)</li>
+          <li>2–3 green chillies (adjust to taste)</li>
+          <li>1-inch piece of ginger</li>
+          <li>Juice of 1 lemon (for tanginess)</li>
+          <li>1 tsp roasted cumin powder</li>
+          <li>Rock salt (sendha namak) to taste</li>
+          <li>1–2 tbsp water (for blending)</li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <div class="section-title sub-heading">Method</div>
+        <ol class="steps">
+          <li><strong>🧆 Make Sabudana Vada</strong> <b>Soak Sabudana:</b> Rinse sabudana thoroughly and soak in water for 4–5 hours. Drain and rest until pearls are soft and non-sticky.</li>
+          <li><strong>Prep Vada Mixture:</strong> Boil and mash potatoes. Mix soaked sabudana, mashed potatoes, crushed roasted peanuts, chopped green chillies, cumin seeds, lemon juice, coriander leaves, and rock salt. Combine well.</li>
+          <li><strong>Shape & Fry:</strong> Form small round vadas. Heat oil in a deep pan and fry vadas on medium heat until golden and crispy on both sides. Drain on paper towels.</li>
+          <div class="section-title sub-heading">🌿 Make Green Tangy Chutney</div>
+          <ol class="steps">
+            <li><Strong>Blend Ingredients:</Strong> In a mixer, add fresh coriander leaves, mint (optional), green chillies, ginger, lemon juice, roasted cumin powder, rock salt, and a splash of water.</li>
+            <li><strong>Grind Smooth:</strong> Blend to a smooth chutney. Adjust salt and lemon juice to taste. Chill until ready to serve.</li>
+          </ol>
+        </ol>
+
+        <div style="height:12px"></div>
+        <div class="section-title sub-heading">🍽️ Serve & Enjoy</div>
+        <p class="notes"><strong>Plate Up:  </strong> Serve hot sabudana vadas with a generous spoonful of green chutney on the side. Garnish with lemon wedges or extra coriander if desired.</p>
+        <p class="notes"><strong>Perfect for: </strong> Vrat days, festive snacks, or anytime you crave a crunchy, flavorful bite!</p>
+
+        <div style="height:12px"></div>
+        <div class="section-title sub-heading">🥗 Nutrition (Per Serving)</div>
+        <ul class="ingredients">
+          <li>Calories ~ 380 kcal</li>
+          <li>Carbohydrates 55 g | Protein 14 g | Fat 12 g | Fiber 8 g</li>
+          <li>Sodium 850 mg | Iron 2.3 mg | Vitamin C 10 mg</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="card-footer">
+      <div style="font-size:15px;color:var(--muted)">© Maharashtrian Kitchen • Authentic Vrat Recipe</div>
+      <div>
+        <button class="muted-btn" onclick="window.print()">Print Recipe</button>
+        <button class="btn" style="margin-left:10px" onclick="downloadHTML()">Download HTML</button>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    function downloadHTML(){
+      const html = `<!doctype html>\n${document.documentElement.outerHTML}`;
+      const blob = new Blob([html], {type: 'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'Sabudana_Vada.html';
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
