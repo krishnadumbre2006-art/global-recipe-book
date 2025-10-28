@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vada Pav Recipe</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff8f0;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #ffcc00;
+            padding: 15px;
+            position: relative;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .back-button {
+            position: absolute;
+            left: 20px;
+            top: 15px;
+            background-color: #fff;
+            color: #333;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #333;
+            color: white;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 30px;
+            gap: 40px;
+        }
+
+        .image-container {
+            flex: 1 1 300px;
+            text-align: center;
+        }
+
+        .image-container img {
+            width: 90%;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .recipe-info {
+            flex: 1 1 400px;
+            background-color: #fffbea;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #d35400;
+            border-bottom: 2px solid #f39c12;
+            padding-bottom: 5px;
+        }
+
+        ul, ol {
+            line-height: 1.6;
+        }
+
+        .tips {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 5px solid #f1c40f;
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #ffcc00;
+            color: #333;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <button class="back-button" onclick="window.location.href='../../index.html'">← Go Back</button>
+        <h1>Vada Pav Recipe</h1>
+    </header>
+
+    <div class="container">
+        <div class="image-container">
+            <img src="../../assets/india/VadaPav.webp" alt="Vada Pav">
+        </div>
+
+        <div class="recipe-info">
+            <h2>About Vada Pav</h2>
+            <p>
+                Vada Pav is a beloved street food from Mumbai — a delicious combination of a spicy potato fritter (vada) 
+                sandwiched in a soft pav (bread roll). It's often served with fried green chilies and spicy chutneys, 
+                making it a perfect on-the-go snack.
+            </p>
+
+            <h2>Ingredients</h2>
+            <ul>
+                <li>4 Pav buns</li>
+                <li>2 large Potatoes – boiled and mashed</li>
+                <li>2 Green Chilies – chopped</li>
+                <li>1 tsp Mustard Seeds</li>
+                <li>8-10 Curry Leaves</li>
+                <li>1/2 tsp Turmeric Powder</li>
+                <li>1/2 tsp Red Chili Powder</li>
+                <li>Salt to taste</li>
+                <li>Oil for frying</li>
+                <li>1 cup Gram Flour (Besan)</li>
+                <li>1/4 tsp Baking Soda</li>
+                <li>Water as required</li>
+            </ul>
+
+            <h2>Steps to Make Vada Pav</h2>
+            <ol>
+                <li>Heat oil in a pan, add mustard seeds, curry leaves, and green chilies.</li>
+                <li>Add mashed potatoes, turmeric, red chili powder, and salt. Mix and cool the mixture.</li>
+                <li>Form small round balls from the mixture.</li>
+                <li>Prepare a batter using besan, baking soda, salt, and water.</li>
+                <li>Dip the balls into the batter and deep fry until golden brown.</li>
+                <li>Slice pav buns and spread green chutney and tamarind chutney.</li>
+                <li>Place the fried vada inside the pav and press gently.</li>
+                <li>Serve hot with fried green chilies.</li>
+            </ol>
+
+            <h2>Serving & Pro Tips</h2>
+            <div class="tips">
+                <ul>
+                    <li>Serve immediately for best taste and crispiness.</li>
+                    <li>You can add garlic chutney powder inside the pav for extra spice.</li>
+                    <li>Use soft pav buns for authentic Mumbai flavor.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © 2025 Vada-Pav Recipe
+    </footer>
+
+</body>
+</html>
