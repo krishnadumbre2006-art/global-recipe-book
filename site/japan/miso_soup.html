@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Miso Soup — Misoshiru (Interactive)</title>
+    <style>
+        :root{
+            --bg:#f7fafc;
+            --card:#ffffff;
+            --muted:#6b7280;
+            --accent:#0ea5a4;
+            --shadow:0 6px 20px rgba(16,24,40,0.08);
+            --radius:12px;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            color:#0f172a;
+        }
+        *{box-sizing:border-box}
+        body{
+            margin:0;
+            background: linear-gradient(180deg,#f8fbfb 0%,var(--bg) 100%);
+            padding:28px;
+            line-height:1.45;
+            -webkit-font-smoothing:antialiased;
+        }
+        .container{
+            max-width:980px;
+            margin:0 auto;
+            display:grid;
+            grid-template-columns:1fr 330px;
+            gap:22px;
+            align-items:start;
+        }
+        header{grid-column:1/-1; margin-bottom:6px; display:flex; gap:16px; align-items:center; justify-content:space-between;}
+        .header-left{display:flex; gap:16px; align-items:center; flex-wrap:wrap}
+        .soup-thumb{
+            width:100px;height:100px;border-radius:12px;object-fit:cover;box-shadow:0 4px 10px rgba(0,0,0,0.08);transition:transform .3s ease;
+        }
+        .soup-thumb:hover{transform:scale(1.05)}
+        header h1{font-size:20px;margin:0}
+        header p{margin:0;color:var(--muted);font-size:13px}
+        .card{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+        .meta{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+        .pill{background:#eef2f2;color:#0b7280;padding:6px 10px;border-radius:999px;font-weight:600;font-size:13px}
+        .tabs{display:flex;gap:8px;margin-bottom:12px}
+        .tab{padding:8px 12px;border-radius:999px;cursor:pointer;background:#f3f7f7;color:#064;font-weight:600}
+        .tab.active{background:var(--accent);color:white;box-shadow:0 6px 16px rgba(14,165,164,0.12)}
+        .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+        h2{margin:0 0 8px 0;font-size:16px}
+        .ingredients{margin-bottom:12px}
+        .ingredient-list{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+        .ingredient-item{display:flex;gap:10px;align-items:center}
+        .ingredient-item input[type="checkbox"]{width:18px;height:18px;cursor:pointer}
+        .quantity{min-width:64px;font-weight:700;font-size:14px;color:#0f172a;text-align:left}
+        .name{color:var(--muted);font-size:14px}
+        .controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+        .btn{border:0;padding:8px 10px;border-radius:10px;cursor:pointer;font-weight:700;background:#111827;color:#fff}
+        .btn.ghost{background:transparent;color:var(--muted);border:1px solid #e6eef0}
+        .small{padding:6px 8px;font-size:13px;border-radius:8px}
+        .steps{margin-top:12px}
+        .step{background:#fbfdfe;border-radius:10px;padding:12px;margin-bottom:10px;border:1px solid #eef6f6}
+        .step h3{margin:0 0 6px 0;font-size:14px}
+        .toggle-step{float:right;cursor:pointer;color:var(--muted);font-size:13px}
+        .right .card{position:sticky;top:26px}
+        .info-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed #eef6f6;font-size:14px;color:var(--muted)}
+        .timer{display:flex;gap:8px;align-items:center;margin-top:8px}
+        .timer-display{font-size:20px;font-weight:800}
+        .servings{display:flex;gap:8px;align-items:center;margin-top:8px}
+        .servings input[type="number"]{width:70px;padding:6px 8px;border-radius:8px;border:1px solid #e6eef0}
+        footer{grid-column:1/-1;margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+        @media (max-width:900px){
+            .container{grid-template-columns:1fr;padding:18px}
+            .right .card{position:static}
+        }
+        @media print{
+            body{padding:6mm;background:white}
+            header .controls,.tab,.controls .btn.ghost{display:none}
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-left">
+                <img src="../../assets/japan/miso soup.jpg">
+                <div>
+                    <h1>Miso Soup — Misoshiru</h1>
+                    <p>Prep: 10 mins · Cook: 10 mins · Total: 20 mins · Difficulty: Very Easy</p>
+                </div>
+            </div>
+            <div class="controls">
+                <button class="btn" id="printBtn" title="Print recipe">Print</button>
+                <button class="btn ghost" id="resetChecks">Uncheck Ingredients</button>
+            </div>
+        </header>
+
+        <main class="left">
+            <section class="card">
+                <div class="meta">
+                    <span class="pill">Classic Japanese Soup</span>
+                    <span class="pill">Serves: <strong id="servesDisplay">2</strong></span>
+                    <span class="pill">Storage: Consume same day or within 1 day</span>
+                </div>
+
+                <div class="tabs" role="tablist" aria-label="Recipe sections">
+                    <button class="tab active" role="tab" data-tab="desc" aria-selected="true">Description</button>
+                    <button class="tab" role="tab" data-tab="ingred" aria-selected="false">Ingredients</button>
+                    <button class="tab" role="tab" data-tab="instr" aria-selected="false">Instructions</button>
+                    <button class="tab" role="tab" data-tab="tips" aria-selected="false">Tips</button>
+                </div>
+
+                <div style="display:flex; gap:12px; align-items:center; margin-bottom:12px;">
+                    <label style="font-weight:700; color:var(--muted)">Scale servings:</label>
+                    <input id="servingsInput" type="number" min="1" value="2" style="width:74px; padding:6px 8px; border-radius:8px; border:1px solid #e6eef0;">
+                    <button class="btn small" id="scaleBtn">Apply</button>
+                </div>
+
+                <!-- Section content panels -->
+                <div id="panel-desc" class="panel" style="display:block;">
+                    <h2 style="margin-top:0">Description</h2>
+                    <p style="color:var(--muted);margin-top:8px;">
+                        Miso Soup (Misoshiru) is a warm, savory Japanese soup made from dashi stock and miso paste.
+                        Common additions include tofu, wakame seaweed, and green onions. It's simple, nourishing, and
+                        a staple in Japanese home cooking.
+                    </p>
+                </div>
+
+                <div id="panel-ingred" class="panel" style="display:none;">
+                    <div class="grid-2">
+                        <div>
+                            <h2>For the Dashi (Stock)</h2>
+                            <div class="ingredients">
+                                <ul class="ingredient-list" id="dashiIngredients">
+                                    <li class="ingredient-item">
+                                        <input type="checkbox" id="i-water">
+                                        <span class="quantity" data-base="4">4</span>
+                                        <span class="name"> cups water</span>
+                                    </li>
+                                    <li class="ingredient-item">
+                                        <input type="checkbox" id="i-kombu">
+                                        <span class="quantity" data-base="1">1</span>
+                                        <span class="name"> piece kombu (4x4 in)</span>
+                                    </li>
+                                    <li class="ingredient-item">
+                                        <input type="checkbox" id="i-bonito">
+                                        <span class="quantity" data-base="1">1</span>
+                                        <span class="name"> cup bonito flakes (optional for non-vegetarian dashi)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h2>For the Soup</h2>
+                            <div class="ingredients">
+                                <ul class="ingredient-list" id="soupIngredients">
+                                    <li class="ingredient-item">
+                                        <input type="checkbox" id="i-miso">
+                                        <span class="quantity" data-base="3">3</span>
+                                        <span class="name"> tbsp miso paste (white/mixed/red to taste)</span>
+                                    </li>
+                                    <li class="ingredient-item">
+                                        <input type="checkbox" id="i-tofu">
+                                        <span class="quantity" data-base="0.5">½</span>
+                                        <span class="name"> cup soft tofu, cubed</span>
+                                    </li>
+                                    <li class="ingredient-item">
+                                        <input type="checkbox" id="i-wakame">
+                                        <span class="quantity" data-base="2">2</span>
+                                        <span class="name"> tbsp dried wakame, rehydrated</span>
+                                    </li>
+                                    <li class="ingredient-item">
+                                        <input type="checkbox" id="i-scallion">
+                                        <span class="quantity" data-base="2">2</span>
+                                        <span class="name"> tbsp green onions, finely sliced</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:6px;">
+                        <h2>Optional Add-ins</h2>
+                        <ul class="ingredient-list">
+                            <li class="ingredient-item"><input type="checkbox"><span class="quantity" data-base="3">3</span><span class="name"> shiitake mushrooms, thinly sliced</span></li>
+                            <li class="ingredient-item"><input type="checkbox"><span class="quantity" data-base="0.25">¼</span><span class="name"> cup spinach (optional)</span></li>
+                        </ul>
+                    </div>
+
+                    <div style="display:flex; gap:8px; align-items:center; margin-top:10px;">
+                        <button class="btn" id="checkAll">Check All Ingredients</button>
+                        <button class="btn ghost" id="copyList">Copy Ingredients</button>
+                    </div>
+                </div>
+
+                <div id="panel-instr" class="panel" style="display:none;">
+                    <h2 style="margin-top:0">Instructions</h2>
+
+                    <div class="steps">
+                        <div class="step" data-step="1">
+                            <h3>1. Make the Dashi <span class="toggle-step" aria-hidden="true">▼</span></h3>
+                            <div class="step-body">
+                                <p>Soak kombu in water for 20–30 minutes. Heat until just before boiling and remove kombu.
+                                Add bonito flakes (if using), bring to a gentle boil, then remove from heat and steep 2–3 minutes.
+                                Strain to obtain clear dashi.</p>
+                            </div>
+                        </div>
+
+                        <div class="step" data-step="2">
+                            <h3>2. Prepare ingredients <span class="toggle-step" aria-hidden="true">▼</span></h3>
+                            <div class="step-body">
+                                <p>Rehydrate wakame for 5 minutes and drain. Cut tofu into small cubes. Slice green onions and any optional vegetables.</p>
+                            </div>
+                        </div>
+
+                        <div class="step" data-step="3">
+                            <h3>3. Heat dashi & add ingredients <span class="toggle-step" aria-hidden="true">▼</span></h3>
+                            <div class="step-body">
+                                <p>Warm the strained dashi over low-medium heat (do not boil aggressively). Add tofu, wakame and any optional vegetables and simmer 2–3 minutes until heated.</p>
+                            </div>
+                        </div>
+
+                        <div class="step" data-step="4">
+                            <h3>4. Add miso paste <span class="toggle-step" aria-hidden="true">▼</span></h3>
+                            <div class="step-body">
+                                <p>In a small bowl, dilute miso with a ladleful of hot dashi until smooth, then gently stir back into the pot.
+                                Do not boil the soup after adding miso—heat gently to preserve flavor and probiotics.</p>
+                            </div>
+                        </div>
+
+                        <div class="step" data-step="5">
+                            <h3>5. Finish & serve <span class="toggle-step" aria-hidden="true">▼</span></h3>
+                            <div class="step-body">
+                                <p>Turn off the heat, add sliced green onions, taste and adjust seasoning. Serve immediately while hot.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="panel-tips" class="panel" style="display:none;">
+                    <h2 style="margin-top:0">Tips</h2>
+                    <ul style="color:var(--muted)">
+                        <li>Never boil miso after adding it—keep the soup below simmer to preserve flavor and probiotics.</li>
+                        <li>Use different miso types: white for mild, red for stronger, or blend for balance.</li>
+                        <li>For vegetarian/vegan dashi, skip bonito and use kombu or dried shiitake dashi.</li>
+                        <li>Dashi can be made ahead and refrigerated up to 3 days or frozen for later use.</li>
+                        <li>Adjust miso quantity to taste—start with less and add more if needed.</li>
+                    </ul>
+                </div>
+
+            </section>
+        </main>
+
+        <aside class="right">
+            <div class="card">
+                <h2 style="margin-top:0">Quick Info</h2>
+                <div class="info-row"><div>Prep Time</div><div>10 mins</div></div>
+                <div class="info-row"><div>Cook Time</div><div>10 mins</div></div>
+                <div class="info-row"><div>Total Time</div><div>20 mins</div></div>
+                <div class="info-row"><div>Difficulty</div><div>Very Easy</div></div>
+
+                <div style="margin-top:12px">
+                    <h3 style="margin:0 0 6px 0">Cook Timer</h3>
+                    <div class="timer">
+                        <div class="timer-display" id="timerDisplay">10:00</div>
+                        <div style="display:flex; gap:8px;">
+                            <button class="btn small" id="timerStart">Start</button>
+                            <button class="btn small ghost" id="timerPause">Pause</button>
+                            <button class="btn small ghost" id="timerReset">Reset</button>
+                        </div>
+                    </div>
+                    <p style="margin:8px 0 0 0; color:var(--muted); font-size:13px;">Timer default: 10 minutes</p>
+                </div>
+
+                <div style="margin-top:12px">
+                    <h3 style="margin:0 0 6px 0">Servings</h3>
+                    <div class="servings">
+                        <input type="number" id="servingsControl" min="1" value="2" aria-label="Number of servings">
+                        <button class="btn small" id="applyServings">Apply</button>
+                    </div>
+                    <p style="margin:8px 0 0 0; color:var(--muted); font-size:13px;">Changing servings scales numeric quantities shown next to ingredients.</p>
+                </div>
+
+                <div style="margin-top:12px">
+                    <h3 style="margin:0 0 6px 0">Notes</h3>
+                    <ul style="margin:0; padding-left:18px; color:var(--muted); font-size:14px;">
+                        <li>Use white/red miso according to taste.</li>
+                        <li>Do not boil miso; heat gently after adding.</li>
+                        <li>Store dashi refrigerated up to 3 days.</li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <footer>
+            Recipe adapted from your document. Enjoy your miso soup! 🍲
+        </footer>
+    </div>
+
+    <script>
+        (function(){
+            const tabs = document.querySelectorAll('.tab');
+            const panels = {
+                desc: document.getElementById('panel-desc'),
+                ingred: document.getElementById('panel-ingred'),
+                instr: document.getElementById('panel-instr'),
+                tips: document.getElementById('panel-tips')
+            };
+
+            function activateTab(name){
+                tabs.forEach(t=>{
+                    if(t.dataset.tab===name){ t.classList.add('active'); t.setAttribute('aria-selected','true'); }
+                    else { t.classList.remove('active'); t.setAttribute('aria-selected','false'); }
+                });
+                Object.keys(panels).forEach(k => panels[k].style.display = (k===name)? 'block' : 'none');
+            }
+            tabs.forEach(t => t.addEventListener('click', ()=> activateTab(t.dataset.tab)));
+            activateTab('desc');
+
+            // Check/uncheck
+            document.getElementById('checkAll').addEventListener('click', ()=>{
+                document.querySelectorAll('.ingredient-list input[type="checkbox"]').forEach(cb => cb.checked = true);
+            });
+            document.getElementById('resetChecks').addEventListener('click', ()=>{
+                document.querySelectorAll('.ingredient-list input[type="checkbox"]').forEach(cb => cb.checked = false);
+            });
+
+            // Copy ingredients
+            document.getElementById('copyList').addEventListener('click', async ()=>{
+                const lists = Array.from(document.querySelectorAll('.ingredient-list'));
+                const items = lists.flatMap(list => Array.from(list.querySelectorAll('li')).map(li=>{
+                    const qty = li.querySelector('.quantity') ? li.querySelector('.quantity').textContent.trim() + ' ' : '';
+                    const name = li.querySelector('.name') ? li.querySelector('.name').textContent.trim() : li.textContent.trim();
+                    return qty + name;
+                }));
+                const text = 'Ingredients:\\n' + items.join('\\n');
+                try{
+                    await navigator.clipboard.writeText(text);
+                    alert('Ingredients copied to clipboard.');
+                }catch(e){
+                    const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+                    document.execCommand('copy'); ta.remove();
+                    alert('Ingredients copied (fallback).');
+                }
+            });
+
+            // Print
+            document.getElementById('printBtn').addEventListener('click', ()=> window.print());
+
+            // Steps toggle
+            document.querySelectorAll('.step').forEach(step => {
+                const toggle = step.querySelector('.toggle-step');
+                const body = step.querySelector('.step-body');
+                toggle.addEventListener('click', ()=> {
+                    const hidden = body.style.display === 'none';
+                    body.style.display = hidden ? '' : 'none';
+                    toggle.textContent = hidden ? '▼' : '▲';
+                });
+                body.style.display = '';
+            });
+
+            // Timer
+            let timerSeconds = 10 * 60;
+            let timerInterval = null;
+            const timerDisplay = document.getElementById('timerDisplay');
+            function formatTime(sec){
+                const m = Math.floor(sec/60).toString().padStart(2,'0');
+                const s = (sec%60).toString().padStart(2,'0');
+                return m + ':' + s;
+            }
+            timerDisplay.textContent = formatTime(timerSeconds);
+            document.getElementById('timerStart').addEventListener('click', ()=> {
+                if(timerInterval) return;
+                timerInterval = setInterval(()=>{
+                    if(timerSeconds <= 0){
+                        clearInterval(timerInterval); timerInterval = null; timerDisplay.textContent = '00:00';
+                        try { new Audio('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=').play(); } catch(e){}
+                        return;
+                    }
+                    timerSeconds--;
+                    timerDisplay.textContent = formatTime(timerSeconds);
+                }, 1000);
+            });
+            document.getElementById('timerPause').addEventListener('click', ()=> {
+                if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
+            });
+            document.getElementById('timerReset').addEventListener('click', ()=> {
+                if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
+                timerSeconds = 10 * 60;
+                timerDisplay.textContent = formatTime(timerSeconds);
+            });
+
+            // Servings scaling
+            const defaultServings = 2; // base quantities are for 2 servings
+            function niceFractionDisplay(val){
+                // represent halves as ½, whole as integer, else 2 decimals
+                const rounded = Math.round(val * 100) / 100;
+                if (Math.abs(rounded - Math.round(rounded)) < 1e-6) return String(Math.round(rounded));
+                const frac = Math.abs(rounded - Math.floor(rounded));
+                if (Math.abs(frac - 0.5) < 1e-6) {
+                    const whole = Math.floor(rounded);
+                    return whole === 0 ? '½' : (whole + '½');
+                }
+                return +rounded.toFixed(2) + '';
+            }
+            function scaleAll(servings){
+                document.getElementById('servesDisplay').textContent = servings;
+                document.querySelectorAll('.quantity').forEach(span=>{
+                    const base = parseFloat(span.getAttribute('data-base'));
+                    if(!isNaN(base)){
+                        const scaled = base * (servings / defaultServings);
+                        span.textContent = niceFractionDisplay(scaled);
+                    }
+                });
+            }
+            // initial
+            scaleAll(defaultServings);
+
+            document.getElementById('scaleBtn').addEventListener('click', ()=> {
+                const v = Number(document.getElementById('servingsInput').value) || defaultServings;
+                document.getElementById('servingsControl').value = v;
+                scaleAll(v);
+            });
+            document.getElementById('applyServings').addEventListener('click', ()=> {
+                const v = Number(document.getElementById('servingsControl').value) || defaultServings;
+                document.getElementById('servingsInput').value = v;
+                document.getElementById('servesDisplay').textContent = v;
+                scaleAll(v);
+            });
+            document.getElementById('servingsInput').addEventListener('keydown', (e)=> { if(e.key==='Enter') document.getElementById('scaleBtn').click(); });
+            document.getElementById('servingsControl').addEventListener('keydown', (e)=> { if(e.key==='Enter') document.getElementById('applyServings').click(); });
+
+            // keyboard focus outlines accessibility
+            document.addEventListener('keydown', (e) => { if (e.key === 'Tab') document.body.classList.add('show-focus'); });
+
+        })();
+    </script>
+</body>
+</html>
